@@ -4,7 +4,7 @@ from __future__ import unicode_literals
 
 AUTHOR = 'Nycheng'
 SITENAME = "Nycheng's Blog"
-SITEURL = ''
+SITEURL = 'https://nycheng.github.io'
 
 PATH = 'content'
 
@@ -13,13 +13,12 @@ TIMEZONE = 'America/Chicago'
 DEFAULT_LANG = 'en'
 
 # Feed generation is usually not desired when developing
-FEED_ALL_ATOM = 'feeds/all.atom.xml'
-FEED_ALL_RSS = 'feeds/all.rss.xml'
+FEED_ALL_ATOM = None
+FEED_ALL_RSS = None
 CATEGORY_FEED_ATOM = None
 TRANSLATION_FEED_ATOM = None
 AUTHOR_FEED_ATOM = None
-AUTHOR_FEED_RSS = 'feeds/%s.rss.xml'
-RSS_FEED_SUMMARY_ONLY = False
+AUTHOR_FEED_RSS = None
 
 # Blogroll
 LINKS = (('Pelican', 'http://getpelican.com/'),
@@ -37,5 +36,5 @@ DEFAULT_PAGINATION = 10
 #RELATIVE_URLS = True
 MARKUP = ('md', 'ipynb')
 
-PLUGIN_PATH = './plugins'
+PLUGIN_PATHS = ['./plugins']
 PLUGINS = ['ipynb.markup']
