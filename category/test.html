@@ -1004,9 +1004,25 @@ h6:hover .anchor-link {
 
 .ansi-bold { font-weight: bold; }
 </style>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Q1</p>
+<p>Suppose BB acquires one of the local breweries through a buyout. Let's denote that acquired local brewery as BB2. This buyout may result in higher prices for some brew in some counties but lower prices in other counties. For counties that the local brewery was avaialbe, consumers experienced the disutility because the local brewery is related to the corporate brand. So the demand in the original home market decrease for the local brewery. Instead, the share for other breweries increase so that the prices of other breweries increases. For counties that the local brewery was not avaible, the new coming brewery will take the market share from the orginal available brewery so that the prices for the original breweries decrease.</p>
+<p>Q2</p>
+<p>Yes, the home market price dropped because of the disutility of buyout. Even thought the product characteristics doesn't change, consumers still have lower utility.</p>
+<p>Q3</p>
+<p>Suppose BB2 adopted BB's cost structure, for the counties that BB2 was available, the lower cost structure would drop the price more; For the counties that BB2 is new, the lower cost structure would still lead to price increasing, but not the same as the case that cost structure doesn't change.</p>
+<p>Q4</p>
+<p>I set 25 market and for each market, the choice set for consumers are different. Also, I assume that the local breweries cannot sell by diagonal.</p>
+
+</div>
+</div>
+</div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[1]:</div>
+<div class="prompt input_prompt">In&nbsp;[0]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
@@ -1021,9 +1037,1174 @@ h6:hover .anchor-link {
 <span class="n">Coporate</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;AB&#39;</span><span class="p">,</span> <span class="s1">&#39;MC&#39;</span><span class="p">,</span> <span class="s1">&#39;BB&#39;</span><span class="p">,</span> <span class="s1">&#39;AB2&#39;</span><span class="p">,</span> <span class="s1">&#39;MC2&#39;</span><span class="p">]</span>
 <span class="n">Available_product</span> <span class="o">=</span> <span class="n">Local_market</span> <span class="o">+</span> <span class="n">Coporate</span>
 <span class="n">I</span><span class="o">=</span><span class="mi">100</span>
+
+<span class="c1">#generate choice set for consumers in each mareket</span>
+<span class="n">Choice_set</span><span class="o">=</span><span class="p">[[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">12</span><span class="p">]</span> <span class="o">+</span> <span class="n">Coporate</span><span class="p">,</span>
+            <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">12</span><span class="p">]</span> <span class="o">+</span> <span class="n">Coporate</span><span class="p">,</span>
+            <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">12</span><span class="p">,</span> <span class="mi">14</span><span class="p">]</span> <span class="o">+</span> <span class="n">Coporate</span><span class="p">,</span>
+            <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">14</span><span class="p">]</span> <span class="o">+</span> <span class="n">Coporate</span><span class="p">,</span>
+            <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">14</span><span class="p">]</span> <span class="o">+</span> <span class="n">Coporate</span><span class="p">,</span>
+            <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">12</span><span class="p">]</span> <span class="o">+</span> <span class="n">Coporate</span><span class="p">,</span>
+            <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">12</span><span class="p">,</span> <span class="mi">14</span><span class="p">]</span> <span class="o">+</span> <span class="n">Coporate</span><span class="p">,</span>
+            <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">12</span><span class="p">,</span> <span class="mi">14</span><span class="p">,</span> <span class="mi">23</span><span class="p">]</span> <span class="o">+</span> <span class="n">Coporate</span><span class="p">,</span>
+            <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">12</span><span class="p">,</span> <span class="mi">14</span><span class="p">]</span> <span class="o">+</span> <span class="n">Coporate</span><span class="p">,</span>
+            <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">14</span><span class="p">]</span> <span class="o">+</span> <span class="n">Coporate</span><span class="p">,</span>
+            <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">12</span><span class="p">,</span> <span class="mi">14</span><span class="p">]</span> <span class="o">+</span> <span class="n">Coporate</span><span class="p">,</span>
+            <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">12</span><span class="p">,</span> <span class="mi">14</span><span class="p">,</span> <span class="mi">23</span><span class="p">]</span> <span class="o">+</span> <span class="n">Coporate</span><span class="p">,</span>
+            <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">12</span><span class="p">,</span> <span class="mi">14</span><span class="p">,</span> <span class="mi">23</span><span class="p">]</span> <span class="o">+</span> <span class="n">Coporate</span><span class="p">,</span>
+            <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">12</span><span class="p">,</span> <span class="mi">14</span><span class="p">,</span> <span class="mi">23</span><span class="p">]</span> <span class="o">+</span> <span class="n">Coporate</span><span class="p">,</span>
+            <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">12</span><span class="p">,</span> <span class="mi">14</span><span class="p">]</span> <span class="o">+</span> <span class="n">Coporate</span><span class="p">,</span>
+            <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">12</span><span class="p">,</span> <span class="mi">23</span><span class="p">]</span> <span class="o">+</span> <span class="n">Coporate</span><span class="p">,</span>
+            <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">12</span><span class="p">,</span> <span class="mi">14</span><span class="p">,</span> <span class="mi">23</span><span class="p">]</span> <span class="o">+</span> <span class="n">Coporate</span><span class="p">,</span>
+            <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">12</span><span class="p">,</span> <span class="mi">14</span><span class="p">,</span> <span class="mi">23</span><span class="p">]</span> <span class="o">+</span> <span class="n">Coporate</span><span class="p">,</span>
+            <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">12</span><span class="p">,</span> <span class="mi">14</span><span class="p">,</span> <span class="mi">23</span><span class="p">]</span> <span class="o">+</span> <span class="n">Coporate</span><span class="p">,</span>
+            <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">14</span><span class="p">,</span> <span class="mi">23</span><span class="p">]</span> <span class="o">+</span> <span class="n">Coporate</span><span class="p">,</span>
+            <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">12</span><span class="p">,</span> <span class="mi">23</span><span class="p">]</span> <span class="o">+</span> <span class="n">Coporate</span><span class="p">,</span>
+            <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">12</span><span class="p">,</span> <span class="mi">23</span><span class="p">]</span> <span class="o">+</span> <span class="n">Coporate</span><span class="p">,</span>
+            <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">12</span><span class="p">,</span> <span class="mi">14</span><span class="p">,</span> <span class="mi">23</span><span class="p">]</span> <span class="o">+</span> <span class="n">Coporate</span><span class="p">,</span>
+            <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">14</span><span class="p">,</span> <span class="mi">23</span><span class="p">]</span> <span class="o">+</span> <span class="n">Coporate</span><span class="p">,</span>
+            <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">14</span><span class="p">,</span> <span class="mi">23</span><span class="p">]</span> <span class="o">+</span> <span class="n">Coporate</span><span class="p">]</span>
+
+<span class="c1">#generate product characteristics</span>
+<span class="n">dummies</span> <span class="o">=</span> <span class="p">[[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">],</span>
+           <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">uniform</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">)</span><span class="o">.</span><span class="n">item</span><span class="p">(),</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">uniform</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">)</span><span class="o">.</span><span class="n">item</span><span class="p">()],</span>
+           <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">uniform</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">)</span><span class="o">.</span><span class="n">item</span><span class="p">(),</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">uniform</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">)</span><span class="o">.</span><span class="n">item</span><span class="p">()],</span>
+           <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">uniform</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">)</span><span class="o">.</span><span class="n">item</span><span class="p">(),</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">uniform</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">)</span><span class="o">.</span><span class="n">item</span><span class="p">()],</span>
+           <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">uniform</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">)</span><span class="o">.</span><span class="n">item</span><span class="p">(),</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">uniform</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">)</span><span class="o">.</span><span class="n">item</span><span class="p">()],</span>
+           <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">uniform</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">)</span><span class="o">.</span><span class="n">item</span><span class="p">(),</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">uniform</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">)</span><span class="o">.</span><span class="n">item</span><span class="p">()],</span>
+           <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">uniform</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">)</span><span class="o">.</span><span class="n">item</span><span class="p">(),</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">uniform</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">)</span><span class="o">.</span><span class="n">item</span><span class="p">()],</span>
+           <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">uniform</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">)</span><span class="o">.</span><span class="n">item</span><span class="p">(),</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">uniform</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">)</span><span class="o">.</span><span class="n">item</span><span class="p">()],</span>
+           <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">uniform</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">)</span><span class="o">.</span><span class="n">item</span><span class="p">(),</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">uniform</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">)</span><span class="o">.</span><span class="n">item</span><span class="p">()],</span>
+           <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">uniform</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">)</span><span class="o">.</span><span class="n">item</span><span class="p">(),</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">uniform</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">)</span><span class="o">.</span><span class="n">item</span><span class="p">()],</span>
+           <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">uniform</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">)</span><span class="o">.</span><span class="n">item</span><span class="p">(),</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">uniform</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">)</span><span class="o">.</span><span class="n">item</span><span class="p">()]]</span>
+
+<span class="n">beta_bar</span> <span class="o">=</span> <span class="p">[</span><span class="mf">1.25</span><span class="p">,</span> <span class="mf">0.75</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">]</span>
+<span class="n">beta_un</span> <span class="o">=</span> <span class="p">[</span><span class="mf">0.8</span><span class="p">,</span> <span class="mf">0.8</span><span class="p">,</span> <span class="mf">0.8</span><span class="p">]</span>
 </pre></div>
 
 </div>
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[0]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1">#generate random price vectors for each product in each market</span>
+<span class="c1"># from the first order condition, I decide to generate initial price vector using normal distribution with mean=0.8, variance=0.5</span>
+<span class="n">p_initial</span> <span class="o">=</span> <span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">*</span> <span class="nb">len</span><span class="p">(</span><span class="n">Choice_set</span><span class="p">)</span>
+<span class="n">s_temp</span> <span class="o">=</span> <span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">*</span> <span class="nb">len</span><span class="p">(</span><span class="n">Choice_set</span><span class="p">)</span>
+<span class="c1"># s_id=[0]*len(Choice_set)</span>
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">Choice_set</span><span class="p">)):</span>
+    <span class="n">p_initial</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">*</span> <span class="nb">len</span><span class="p">(</span><span class="n">Choice_set</span><span class="p">[</span><span class="n">i</span><span class="p">])</span>
+    <span class="n">s_temp</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">*</span> <span class="nb">len</span><span class="p">(</span><span class="n">Choice_set</span><span class="p">[</span><span class="n">i</span><span class="p">])</span>
+    <span class="c1"># s_id[i] = [0] * len(Choice_set[i])</span>
+
+<span class="c1">#create the map of Available_product index to the Choice_set index</span>
+<span class="n">index</span><span class="o">=</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">*</span><span class="nb">len</span><span class="p">(</span><span class="n">Choice_set</span><span class="p">)</span>
+<span class="n">elem</span> <span class="o">=</span> <span class="p">{</span><span class="n">k</span><span class="p">:</span> <span class="n">i</span> <span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">k</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">Available_product</span><span class="p">)}</span>
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">Choice_set</span><span class="p">)):</span>
+      <span class="n">index</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="nb">map</span><span class="p">(</span><span class="n">elem</span><span class="o">.</span><span class="n">get</span><span class="p">,</span> <span class="n">Choice_set</span><span class="p">[</span><span class="n">i</span><span class="p">]))</span>
+
+<span class="c1">#p=mc</span>
+<span class="k">for</span> <span class="n">t</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">Choice_set</span><span class="p">)):</span>
+    <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">Choice_set</span><span class="p">[</span><span class="n">t</span><span class="p">])):</span>
+        <span class="n">p_initial</span><span class="p">[</span><span class="n">t</span><span class="p">][</span><span class="n">j</span><span class="p">]</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">normal</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">)</span><span class="o">/</span><span class="mi">8</span><span class="p">)</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">normal</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">)</span><span class="o">/</span><span class="mi">10</span><span class="p">)</span> 
+
+<span class="c1">#generate the individual initial share for each product in each market by randomly assigning price </span>
+<span class="k">def</span> <span class="nf">id_share</span><span class="p">(</span><span class="n">Choice_set</span><span class="p">,</span> <span class="n">dummies</span><span class="p">,</span> <span class="n">p_initial</span><span class="p">,</span> <span class="n">index</span><span class="p">,</span> <span class="n">s_temp</span><span class="p">):</span>
+    <span class="k">for</span> <span class="n">t</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">Choice_set</span><span class="p">)):</span>
+        <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">Choice_set</span><span class="p">[</span><span class="n">t</span><span class="p">])):</span>
+            <span class="n">s_temp</span><span class="p">[</span><span class="n">t</span><span class="p">][</span><span class="n">j</span><span class="p">]</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">beta_bar</span><span class="p">)</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">dummies</span><span class="p">[</span><span class="n">index</span><span class="p">[</span><span class="n">t</span><span class="p">][</span><span class="n">j</span><span class="p">]]))</span><span class="o">+</span><span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">beta_un</span><span class="p">)</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">normal</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">3</span><span class="p">))</span><span class="o">-</span><span class="n">p_initial</span><span class="p">[</span><span class="n">t</span><span class="p">][</span><span class="n">j</span><span class="p">]</span><span class="o">+</span><span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">normal</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">))</span>
+    <span class="n">s_id</span><span class="o">=</span><span class="p">[]</span>
+    <span class="n">s_id</span><span class="o">=</span><span class="p">[[</span><span class="n">s_temp</span><span class="p">[</span><span class="n">t</span><span class="p">][</span><span class="n">j</span><span class="p">]</span><span class="o">/</span><span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">s_temp</span><span class="p">[</span><span class="n">t</span><span class="p">])</span> <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">Choice_set</span><span class="p">[</span><span class="n">t</span><span class="p">]))]</span> <span class="k">for</span> <span class="n">t</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">Choice_set</span><span class="p">))]</span>
+    <span class="k">return</span> <span class="n">s_id</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[0]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1">#generate ownership matrix</span>
+<span class="n">ownership</span><span class="o">=</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">identity</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">Choice_set</span><span class="p">[</span><span class="n">t</span><span class="p">]))</span> <span class="k">for</span> <span class="n">t</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">Choice_set</span><span class="p">))]</span>
+<span class="k">for</span> <span class="n">t</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">Choice_set</span><span class="p">)):</span>
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">Choice_set</span><span class="p">[</span><span class="n">t</span><span class="p">])):</span>
+        <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">Choice_set</span><span class="p">[</span><span class="n">t</span><span class="p">])):</span>
+            <span class="k">if</span> <span class="p">(</span><span class="n">Choice_set</span><span class="p">[</span><span class="n">t</span><span class="p">][</span><span class="n">i</span><span class="p">]</span><span class="o">==</span><span class="s2">&quot;AB&quot;</span> <span class="ow">and</span> <span class="n">Choice_set</span><span class="p">[</span><span class="n">t</span><span class="p">][</span><span class="n">j</span><span class="p">]</span><span class="o">==</span><span class="s1">&#39;AB2&#39;</span><span class="p">):</span>
+                <span class="n">ownership</span><span class="p">[</span><span class="n">t</span><span class="p">][</span><span class="n">i</span><span class="p">][</span><span class="n">j</span><span class="p">]</span><span class="o">=</span><span class="mi">1</span>
+                <span class="n">ownership</span><span class="p">[</span><span class="n">t</span><span class="p">][</span><span class="n">j</span><span class="p">][</span><span class="n">i</span><span class="p">]</span><span class="o">=</span><span class="mi">1</span>
+            <span class="k">elif</span> <span class="p">(</span><span class="n">Choice_set</span><span class="p">[</span><span class="n">t</span><span class="p">][</span><span class="n">i</span><span class="p">]</span><span class="o">==</span><span class="s2">&quot;MC&quot;</span> <span class="ow">and</span> <span class="n">Choice_set</span><span class="p">[</span><span class="n">t</span><span class="p">][</span><span class="n">j</span><span class="p">]</span><span class="o">==</span><span class="s1">&#39;MC2&#39;</span><span class="p">):</span>
+                <span class="n">ownership</span><span class="p">[</span><span class="n">t</span><span class="p">][</span><span class="n">i</span><span class="p">][</span><span class="n">j</span><span class="p">]</span><span class="o">=</span><span class="mi">1</span>
+                <span class="n">ownership</span><span class="p">[</span><span class="n">t</span><span class="p">][</span><span class="n">j</span><span class="p">][</span><span class="n">i</span><span class="p">]</span><span class="o">=</span><span class="mi">1</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[0]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1">#use old price to generate new price</span>
+<span class="k">def</span> <span class="nf">new_price</span><span class="p">(</span><span class="n">Choice_set</span><span class="p">,</span> <span class="n">dummies</span><span class="p">,</span> <span class="n">p_initial</span><span class="p">,</span> <span class="n">ownership</span><span class="p">,</span> <span class="n">index</span><span class="p">,</span> <span class="n">s_temp</span><span class="p">,</span> <span class="n">I</span><span class="p">):</span>
+    <span class="n">s_all_id</span><span class="o">=</span><span class="p">[]</span>
+    <span class="n">s_all_id</span><span class="o">=</span><span class="p">[</span><span class="n">id_share</span><span class="p">(</span><span class="n">Choice_set</span><span class="p">,</span> <span class="n">dummies</span><span class="p">,</span> <span class="n">p_initial</span><span class="p">,</span> <span class="n">index</span><span class="p">,</span> <span class="n">s_temp</span><span class="p">)</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">I</span><span class="p">)]</span>
+    <span class="c1"># s_all_id[0][0][0]</span>
+    
+    <span class="c1">#market share</span>
+    <span class="n">s_initial</span><span class="o">=</span><span class="p">[]</span>
+    <span class="n">s_initial</span><span class="o">=</span><span class="p">[[</span><span class="nb">sum</span><span class="p">(</span><span class="n">s_all_id</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="n">t</span><span class="p">][</span><span class="n">j</span><span class="p">]</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">I</span><span class="p">))</span><span class="o">/</span><span class="n">I</span> <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">Choice_set</span><span class="p">[</span><span class="n">t</span><span class="p">]))]</span> <span class="k">for</span> <span class="n">t</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">Choice_set</span><span class="p">))]</span>
+
+    <span class="c1">#generate ds/dp matrix</span>
+    <span class="n">ds</span><span class="o">=</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">((</span><span class="nb">len</span><span class="p">(</span><span class="n">Choice_set</span><span class="p">[</span><span class="n">t</span><span class="p">]),</span><span class="nb">len</span><span class="p">(</span><span class="n">Choice_set</span><span class="p">[</span><span class="n">t</span><span class="p">])))</span> <span class="k">for</span> <span class="n">t</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">Choice_set</span><span class="p">))]</span>
+    <span class="k">for</span> <span class="n">t</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">Choice_set</span><span class="p">)):</span>
+        <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">Choice_set</span><span class="p">[</span><span class="n">t</span><span class="p">])):</span>
+            <span class="k">for</span> <span class="n">k</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">Choice_set</span><span class="p">[</span><span class="n">t</span><span class="p">])):</span>
+                <span class="k">if</span> <span class="p">(</span><span class="n">j</span><span class="o">==</span><span class="n">k</span><span class="p">):</span>
+                    <span class="n">ds</span><span class="p">[</span><span class="n">t</span><span class="p">][</span><span class="n">j</span><span class="p">][</span><span class="n">k</span><span class="p">]</span><span class="o">=</span><span class="nb">sum</span><span class="p">(</span><span class="n">s_all_id</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="n">t</span><span class="p">][</span><span class="n">k</span><span class="p">]</span><span class="o">*</span><span class="n">s_all_id</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="n">t</span><span class="p">][</span><span class="n">j</span><span class="p">]</span><span class="o">-</span><span class="n">s_all_id</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="n">t</span><span class="p">][</span><span class="n">k</span><span class="p">]</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">I</span><span class="p">))</span><span class="o">/</span><span class="n">I</span>
+                <span class="k">if</span> <span class="p">(</span><span class="n">j</span><span class="o">!=</span><span class="n">k</span><span class="p">):</span>
+                    <span class="n">ds</span><span class="p">[</span><span class="n">t</span><span class="p">][</span><span class="n">j</span><span class="p">][</span><span class="n">k</span><span class="p">]</span><span class="o">=</span><span class="nb">sum</span><span class="p">(</span><span class="n">s_all_id</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="n">t</span><span class="p">][</span><span class="n">k</span><span class="p">]</span><span class="o">*</span><span class="n">s_all_id</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="n">t</span><span class="p">][</span><span class="n">j</span><span class="p">]</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">I</span><span class="p">))</span><span class="o">/</span><span class="n">I</span>
+
+    <span class="c1">#multiply ownership matrix and ds/dp matrix element  by element</span>
+    <span class="n">dsdp</span><span class="o">=</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">((</span><span class="nb">len</span><span class="p">(</span><span class="n">Choice_set</span><span class="p">[</span><span class="n">t</span><span class="p">]),</span><span class="nb">len</span><span class="p">(</span><span class="n">Choice_set</span><span class="p">[</span><span class="n">t</span><span class="p">])))</span> <span class="k">for</span> <span class="n">t</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">Choice_set</span><span class="p">))]</span>
+    <span class="n">dsdp</span><span class="o">=</span><span class="p">[[[</span><span class="n">ownership</span><span class="p">[</span><span class="n">t</span><span class="p">][</span><span class="n">i</span><span class="p">][</span><span class="n">j</span><span class="p">]</span><span class="o">*</span><span class="n">ds</span><span class="p">[</span><span class="n">t</span><span class="p">][</span><span class="n">i</span><span class="p">][</span><span class="n">j</span><span class="p">]</span> <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">Choice_set</span><span class="p">[</span><span class="n">t</span><span class="p">]))]</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">Choice_set</span><span class="p">[</span><span class="n">t</span><span class="p">]))]</span> <span class="k">for</span> <span class="n">t</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">Choice_set</span><span class="p">))]</span>
+
+    <span class="c1"># dsdp_inverse=[np.zeros((len(Choice_set[t]),len(Choice_set[t]))) for t in range(len(Choice_set))]</span>
+    <span class="c1"># for t in range(len(Choice_set)):</span>
+    <span class="c1">#     for i in range(len(Choice_set[t])):</span>
+    <span class="c1">#         for j in range(len(Choice_set[t])):</span>
+    <span class="c1">#             if dsdp[t][i][j]!=0:</span>
+    <span class="c1">#                 dsdp_inverse[t][i][j]=dsdp[t][i][j]**(-1)</span>
+    <span class="n">dsdp_inverse</span><span class="o">=</span><span class="p">[]</span>
+    <span class="n">dsdp_inverse</span><span class="o">=</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">linalg</span><span class="o">.</span><span class="n">inv</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">dsdp</span><span class="p">[</span><span class="n">t</span><span class="p">]))</span> <span class="k">for</span> <span class="n">t</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">Choice_set</span><span class="p">))]</span>
+
+    <span class="c1">#generate p_new</span>
+    <span class="n">omega</span><span class="o">=</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">*</span><span class="nb">len</span><span class="p">(</span><span class="n">Choice_set</span><span class="p">)</span>
+    <span class="n">w</span><span class="o">=</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">*</span><span class="nb">len</span><span class="p">(</span><span class="n">Choice_set</span><span class="p">)</span>
+    <span class="n">mc</span><span class="o">=</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">*</span><span class="nb">len</span><span class="p">(</span><span class="n">Choice_set</span><span class="p">)</span>
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">Choice_set</span><span class="p">)):</span>
+        <span class="n">omega</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">*</span> <span class="nb">len</span><span class="p">(</span><span class="n">Choice_set</span><span class="p">[</span><span class="n">i</span><span class="p">])</span>
+        <span class="n">w</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">*</span> <span class="nb">len</span><span class="p">(</span><span class="n">Choice_set</span><span class="p">[</span><span class="n">i</span><span class="p">])</span>
+        <span class="n">mc</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">*</span> <span class="nb">len</span><span class="p">(</span><span class="n">Choice_set</span><span class="p">[</span><span class="n">i</span><span class="p">])</span>
+
+    <span class="k">for</span> <span class="n">t</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">Choice_set</span><span class="p">)):</span>
+        <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">Choice_set</span><span class="p">[</span><span class="n">t</span><span class="p">])):</span>
+            <span class="n">omega</span><span class="p">[</span><span class="n">t</span><span class="p">][</span><span class="n">j</span><span class="p">]</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">normal</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">)</span><span class="o">/</span><span class="mi">10</span><span class="p">)</span>
+            <span class="n">w</span><span class="p">[</span><span class="n">t</span><span class="p">][</span><span class="n">j</span><span class="p">]</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">normal</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">)</span><span class="o">/</span><span class="mi">8</span><span class="p">)</span>
+            <span class="k">if</span> <span class="p">(</span><span class="n">index</span><span class="p">[</span><span class="n">t</span><span class="p">][</span><span class="n">j</span><span class="p">]</span><span class="o">==</span><span class="mi">0</span><span class="p">):</span>
+                <span class="n">mc</span><span class="p">[</span><span class="n">t</span><span class="p">][</span><span class="n">j</span><span class="p">]</span><span class="o">=</span><span class="mi">0</span>
+            <span class="k">if</span> <span class="p">(</span><span class="n">index</span><span class="p">[</span><span class="n">t</span><span class="p">][</span><span class="n">j</span><span class="p">]</span><span class="o">&lt;</span><span class="mi">6</span> <span class="ow">and</span> <span class="n">index</span><span class="p">[</span><span class="n">t</span><span class="p">][</span><span class="n">j</span><span class="p">]</span><span class="o">&gt;</span><span class="mi">0</span><span class="p">):</span>
+                <span class="n">mc</span><span class="p">[</span><span class="n">t</span><span class="p">][</span><span class="n">j</span><span class="p">]</span><span class="o">=</span><span class="n">omega</span><span class="p">[</span><span class="n">t</span><span class="p">][</span><span class="n">j</span><span class="p">]</span><span class="o">*</span><span class="n">w</span><span class="p">[</span><span class="n">t</span><span class="p">][</span><span class="n">j</span><span class="p">]</span>
+            <span class="k">elif</span> <span class="p">(</span><span class="n">index</span><span class="p">[</span><span class="n">t</span><span class="p">][</span><span class="n">j</span><span class="p">]</span><span class="o">&gt;=</span><span class="mi">6</span><span class="p">):</span>
+                <span class="n">mc</span><span class="p">[</span><span class="n">t</span><span class="p">][</span><span class="n">j</span><span class="p">]</span><span class="o">=</span><span class="n">omega</span><span class="p">[</span><span class="n">t</span><span class="p">][</span><span class="n">j</span><span class="p">]</span><span class="o">*</span><span class="n">w</span><span class="p">[</span><span class="n">t</span><span class="p">][</span><span class="n">j</span><span class="p">]</span><span class="o">*</span><span class="mf">0.85</span>
+    <span class="c1"># mc=[[np.exp(np.random.normal(0,1,1)/8)*np.exp(np.random.normal(0,1,1)/10) for j in range(len(Choice_set[t]))] for t in range(len(Choice_set))]</span>
+    <span class="c1"># p=[mc[t]-np.matmul(np.array(dsdp_inverse[t]),np.array(s_initial[t])) for t in range(len(Choice_set))]</span>
+    <span class="n">p</span><span class="o">=</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">*</span><span class="nb">len</span><span class="p">(</span><span class="n">Choice_set</span><span class="p">)</span>
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">Choice_set</span><span class="p">)):</span>
+        <span class="n">p</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">*</span> <span class="nb">len</span><span class="p">(</span><span class="n">Choice_set</span><span class="p">[</span><span class="n">i</span><span class="p">])</span>
+
+    <span class="k">for</span> <span class="n">t</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">Choice_set</span><span class="p">)):</span>
+        <span class="n">a</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">matmul</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">dsdp_inverse</span><span class="p">[</span><span class="n">t</span><span class="p">]),</span><span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">s_initial</span><span class="p">[</span><span class="n">t</span><span class="p">]))</span>
+        <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">Choice_set</span><span class="p">[</span><span class="n">t</span><span class="p">])):</span>
+            <span class="n">p</span><span class="p">[</span><span class="n">t</span><span class="p">][</span><span class="n">j</span><span class="p">]</span><span class="o">=</span><span class="n">mc</span><span class="p">[</span><span class="n">t</span><span class="p">][</span><span class="n">j</span><span class="p">]</span><span class="o">-</span><span class="n">a</span><span class="p">[</span><span class="n">j</span><span class="p">]</span>
+    <span class="k">return</span> <span class="n">p</span><span class="p">,</span> <span class="n">s_initial</span><span class="p">,</span> <span class="n">mc</span><span class="p">,</span> <span class="n">dsdp</span><span class="p">,</span> <span class="n">w</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[0]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1">#run price convergent iteration</span>
+<span class="n">t_old</span> <span class="o">=</span> <span class="mi">0</span>
+<span class="n">t_new</span> <span class="o">=</span> <span class="mi">0</span>
+<span class="n">count</span><span class="o">=</span><span class="mi">0</span>
+<span class="n">dif</span><span class="o">=</span><span class="mi">1000</span>
+<span class="c1"># dif = t_new - t_old</span>
+
+<span class="k">while</span> <span class="n">dif</span> <span class="o">&gt;</span> <span class="mf">0.05</span><span class="p">:</span>
+    <span class="n">p1</span><span class="p">,</span> <span class="n">s1</span><span class="p">,</span> <span class="n">mc</span><span class="p">,</span> <span class="n">dsdp</span><span class="p">,</span> <span class="n">w</span><span class="o">=</span><span class="n">new_price</span><span class="p">(</span><span class="n">Choice_set</span><span class="p">,</span> <span class="n">dummies</span><span class="p">,</span> <span class="n">p_initial</span><span class="p">,</span> <span class="n">ownership</span><span class="p">,</span> <span class="n">index</span><span class="p">,</span> <span class="n">s_temp</span><span class="p">,</span> <span class="n">I</span><span class="p">)</span>
+    <span class="k">for</span> <span class="n">t</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">Choice_set</span><span class="p">)):</span>
+        <span class="n">new</span><span class="o">=</span><span class="nb">sum</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">p1</span><span class="p">[</span><span class="n">t</span><span class="p">]))</span>
+        <span class="n">old</span><span class="o">=</span><span class="nb">sum</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">p_initial</span><span class="p">[</span><span class="n">t</span><span class="p">]))</span>
+        <span class="n">t_new</span><span class="o">=</span><span class="n">t_new</span><span class="o">+</span><span class="n">new</span>
+        <span class="n">t_old</span><span class="o">=</span><span class="n">t_old</span><span class="o">+</span><span class="n">old</span>
+    <span class="n">dif</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">absolute</span><span class="p">(</span><span class="n">t_new</span><span class="o">-</span><span class="n">t_old</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">dif</span><span class="p">)</span>
+    <span class="n">p_initial</span><span class="o">=</span><span class="n">p1</span>
+    <span class="n">t_new</span><span class="o">=</span><span class="mi">0</span>
+    <span class="n">t_old</span><span class="o">=</span><span class="mi">0</span>
+    <span class="n">count</span><span class="o">=</span><span class="n">count</span><span class="o">+</span><span class="mi">1</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[0]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">p1</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+<div class="prompt"></div>
+
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>[array([1.44882349]), array([2.39201794]), array([2.73532714]), array([2.80234308]), array([2.57016597]), array([2.57482058]), array([3.24092971]), array([2.80247349])]
+</pre>
+</div>
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Q5</p>
+<p>After generating the price and market share, we use nested logit model to estimate $\beta$, $\alpha$ and $\sigma$. 
+\begin{align}
+    log(s_{jt}-log(s_{0t}))=x_j\beta+\alpha p_jt+\sigma log(s_{jt|ht})+\epsilon_{jt}
+\end{align}</p>
+<p>In particular, I dropped the outside good sample so that there are 197 samples in total. Since price and group share are endogeneous varibles, so I use two instrument variables. The first one is the own cost shifter $w_{jt}$ and the another one is the sum of the cost shifter for the breweries other than product j $\sum_{-j}w_{-jt}$.</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[0]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1">#generate the array of delta_jt=log(s_jt)-log(s_0t)</span>
+<span class="n">delta</span><span class="o">=</span><span class="p">[]</span>
+<span class="n">delta_1</span><span class="o">=</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">*</span><span class="nb">len</span><span class="p">(</span><span class="n">Choice_set</span><span class="p">)</span>
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">Choice_set</span><span class="p">)):</span>
+    <span class="n">delta_1</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">*</span> <span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">Choice_set</span><span class="p">[</span><span class="n">i</span><span class="p">])</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span>
+
+<span class="k">for</span> <span class="n">t</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">Choice_set</span><span class="p">)):</span>
+    <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">Choice_set</span><span class="p">[</span><span class="n">t</span><span class="p">])):</span>
+        <span class="n">temp</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">log</span><span class="p">(</span><span class="n">s1</span><span class="p">[</span><span class="n">t</span><span class="p">][</span><span class="n">j</span><span class="p">])</span><span class="o">-</span><span class="n">np</span><span class="o">.</span><span class="n">log</span><span class="p">(</span><span class="n">s1</span><span class="p">[</span><span class="n">t</span><span class="p">][</span><span class="mi">0</span><span class="p">])</span>
+        <span class="n">delta_1</span><span class="p">[</span><span class="n">t</span><span class="p">][</span><span class="n">j</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="n">temp</span><span class="p">)</span>
+        <span class="n">delta</span><span class="o">.</span><span class="n">extend</span><span class="p">(</span><span class="nb">list</span><span class="p">(</span><span class="n">temp</span><span class="p">))</span>
+<span class="n">delta</span><span class="o">=</span><span class="n">pd</span><span class="o">.</span><span class="n">Series</span><span class="p">(</span><span class="n">delta</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="s1">&#39;Share&#39;</span><span class="p">)</span>
+<span class="c1"># sigma=np.transpose(np.matrix(sigma))</span>
+<span class="c1"># sig={}</span>
+<span class="c1"># sig[&#39;sigma&#39;]=sigma</span>
+<span class="c1"># sigma=pd.DataFrame(sigma)</span>
+
+<span class="c1">#generate the array of price_jt</span>
+<span class="n">p</span><span class="o">=</span><span class="p">[]</span>
+<span class="k">for</span> <span class="n">t</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">Choice_set</span><span class="p">)):</span>
+    <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">Choice_set</span><span class="p">[</span><span class="n">t</span><span class="p">])):</span>
+        <span class="n">temp</span><span class="o">=</span><span class="nb">list</span><span class="p">(</span><span class="n">p1</span><span class="p">[</span><span class="n">t</span><span class="p">][</span><span class="n">j</span><span class="p">])</span>
+        <span class="n">p</span><span class="o">.</span><span class="n">extend</span><span class="p">(</span><span class="n">temp</span><span class="p">)</span>
+<span class="n">p</span><span class="o">=</span><span class="n">pd</span><span class="o">.</span><span class="n">Series</span><span class="p">(</span><span class="n">p</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="s1">&#39;price&#39;</span><span class="p">)</span>
+<span class="c1"># p=np.transpose(np.matrix(p))</span>
+<span class="c1"># p=pd.DataFrame(p)</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[0]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1">#generate group share log(s_j/s_h)</span>
+<span class="n">s_group</span><span class="o">=</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">*</span><span class="nb">len</span><span class="p">(</span><span class="n">Choice_set</span><span class="p">)</span>
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">Choice_set</span><span class="p">)):</span>
+    <span class="n">s_group</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">*</span> <span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">Choice_set</span><span class="p">[</span><span class="n">i</span><span class="p">]))</span>
+
+<span class="k">for</span> <span class="n">t</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">Choice_set</span><span class="p">)):</span>
+    <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">Choice_set</span><span class="p">[</span><span class="n">t</span><span class="p">])):</span>
+        <span class="k">if</span> <span class="p">(</span><span class="n">index</span><span class="p">[</span><span class="n">t</span><span class="p">][</span><span class="n">j</span><span class="p">]</span><span class="o">==</span><span class="mi">0</span><span class="p">):</span>
+            <span class="n">s_group</span><span class="p">[</span><span class="n">t</span><span class="p">][</span><span class="n">j</span><span class="p">]</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">log</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+        <span class="k">if</span> <span class="p">(</span><span class="n">index</span><span class="p">[</span><span class="n">t</span><span class="p">][</span><span class="n">j</span><span class="p">]</span><span class="o">&gt;=</span><span class="mi">6</span><span class="p">):</span>
+            <span class="n">s_group</span><span class="p">[</span><span class="n">t</span><span class="p">][</span><span class="n">j</span><span class="p">]</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">log</span><span class="p">(</span><span class="n">s1</span><span class="p">[</span><span class="n">t</span><span class="p">][</span><span class="n">j</span><span class="p">]</span><span class="o">/</span><span class="p">(</span><span class="nb">sum</span><span class="p">(</span><span class="n">s1</span><span class="p">[</span><span class="n">t</span><span class="p">][</span><span class="n">i</span><span class="p">]</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">Choice_set</span><span class="p">[</span><span class="n">t</span><span class="p">])</span><span class="o">-</span><span class="mi">5</span><span class="p">,</span><span class="nb">len</span><span class="p">(</span><span class="n">Choice_set</span><span class="p">[</span><span class="n">t</span><span class="p">])))))</span>
+        <span class="k">elif</span> <span class="p">(</span><span class="n">index</span><span class="p">[</span><span class="n">t</span><span class="p">][</span><span class="n">j</span><span class="p">]</span><span class="o">&lt;</span><span class="mi">6</span> <span class="ow">and</span> <span class="n">index</span><span class="p">[</span><span class="n">t</span><span class="p">][</span><span class="n">j</span><span class="p">]</span><span class="o">&gt;</span><span class="mi">0</span><span class="p">):</span>
+            <span class="n">s_group</span><span class="p">[</span><span class="n">t</span><span class="p">][</span><span class="n">j</span><span class="p">]</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">log</span><span class="p">(</span><span class="n">s1</span><span class="p">[</span><span class="n">t</span><span class="p">][</span><span class="n">j</span><span class="p">]</span><span class="o">/</span><span class="p">(</span><span class="nb">sum</span><span class="p">(</span><span class="n">s1</span><span class="p">[</span><span class="n">t</span><span class="p">][</span><span class="n">i</span><span class="p">]</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">Choice_set</span><span class="p">[</span><span class="n">t</span><span class="p">])</span><span class="o">-</span><span class="mi">5</span><span class="p">))))</span>
+
+<span class="n">group_share</span><span class="o">=</span><span class="p">[]</span>
+<span class="k">for</span> <span class="n">t</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">Choice_set</span><span class="p">)):</span>
+    <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">Choice_set</span><span class="p">[</span><span class="n">t</span><span class="p">])):</span>
+        <span class="n">temp</span><span class="o">=</span><span class="nb">list</span><span class="p">(</span><span class="n">s_group</span><span class="p">[</span><span class="n">t</span><span class="p">][</span><span class="n">j</span><span class="p">])</span>
+        <span class="n">group_share</span><span class="o">.</span><span class="n">extend</span><span class="p">(</span><span class="n">temp</span><span class="p">)</span>
+<span class="c1"># mc_iv=np.transpose(np.matrix(mc_iv))</span>
+<span class="n">group_share</span><span class="o">=</span><span class="n">pd</span><span class="o">.</span><span class="n">Series</span><span class="p">(</span><span class="n">group_share</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="s1">&#39;Group_share&#39;</span><span class="p">)</span>
+
+<span class="n">endo</span><span class="o">=</span><span class="n">pd</span><span class="o">.</span><span class="n">concat</span><span class="p">([</span><span class="n">p</span><span class="p">,</span><span class="n">group_share</span><span class="p">],</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[0]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1">#generate the array of x_jt</span>
+<span class="n">control</span><span class="o">=</span><span class="p">[]</span>
+<span class="k">for</span> <span class="n">t</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">Choice_set</span><span class="p">)):</span>
+    <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">Choice_set</span><span class="p">[</span><span class="n">t</span><span class="p">])):</span>
+        <span class="n">temp</span><span class="o">=</span><span class="nb">list</span><span class="p">(</span><span class="n">dummies</span><span class="p">[</span><span class="n">index</span><span class="p">[</span><span class="n">t</span><span class="p">][</span><span class="n">j</span><span class="p">]])</span>
+        <span class="c1">#  + [np.random.normal(0,1,1).item()]</span>
+        <span class="n">control</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">temp</span><span class="p">)</span>
+
+<span class="n">control</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">control</span><span class="p">)</span>
+<span class="n">x1</span><span class="o">=</span><span class="n">pd</span><span class="o">.</span><span class="n">to_numeric</span><span class="p">(</span><span class="n">pd</span><span class="o">.</span><span class="n">Series</span><span class="p">(</span><span class="n">control</span><span class="p">[:,</span><span class="mi">0</span><span class="p">],</span> <span class="n">name</span><span class="o">=</span><span class="s1">&#39;x1&#39;</span><span class="p">),</span> <span class="n">errors</span><span class="o">=</span><span class="s1">&#39;coerce&#39;</span><span class="p">)</span>
+<span class="n">x2</span><span class="o">=</span><span class="n">pd</span><span class="o">.</span><span class="n">to_numeric</span><span class="p">(</span><span class="n">pd</span><span class="o">.</span><span class="n">Series</span><span class="p">(</span><span class="n">control</span><span class="p">[:,</span><span class="mi">1</span><span class="p">],</span> <span class="n">name</span><span class="o">=</span><span class="s1">&#39;x2&#39;</span><span class="p">),</span> <span class="n">errors</span><span class="o">=</span><span class="s1">&#39;coerce&#39;</span><span class="p">)</span>
+<span class="n">x3</span><span class="o">=</span><span class="n">pd</span><span class="o">.</span><span class="n">to_numeric</span><span class="p">(</span><span class="n">pd</span><span class="o">.</span><span class="n">Series</span><span class="p">(</span><span class="n">control</span><span class="p">[:,</span><span class="mi">2</span><span class="p">],</span> <span class="n">name</span><span class="o">=</span><span class="s1">&#39;x3&#39;</span><span class="p">),</span> <span class="n">errors</span><span class="o">=</span><span class="s1">&#39;coerce&#39;</span><span class="p">)</span>
+<span class="n">x4</span><span class="o">=</span><span class="n">pd</span><span class="o">.</span><span class="n">to_numeric</span><span class="p">(</span><span class="n">pd</span><span class="o">.</span><span class="n">Series</span><span class="p">(</span><span class="n">control</span><span class="p">[:,</span><span class="mi">3</span><span class="p">],</span> <span class="n">name</span><span class="o">=</span><span class="s1">&#39;x4&#39;</span><span class="p">),</span> <span class="n">errors</span><span class="o">=</span><span class="s1">&#39;coerce&#39;</span><span class="p">)</span>
+<span class="n">x5</span><span class="o">=</span><span class="n">pd</span><span class="o">.</span><span class="n">to_numeric</span><span class="p">(</span><span class="n">pd</span><span class="o">.</span><span class="n">Series</span><span class="p">(</span><span class="n">control</span><span class="p">[:,</span><span class="mi">4</span><span class="p">],</span> <span class="n">name</span><span class="o">=</span><span class="s1">&#39;x5&#39;</span><span class="p">),</span> <span class="n">errors</span><span class="o">=</span><span class="s1">&#39;coerce&#39;</span><span class="p">)</span>
+<span class="c1"># x6=pd.to_numeric(pd.Series(control[:,5], name=&#39;x6&#39;), errors=&#39;coerce&#39;)</span>
+<span class="c1"># control=pd.concat([x1, x2, x3, x4, x5, x6], axis=1)</span>
+<span class="n">control</span><span class="o">=</span><span class="n">pd</span><span class="o">.</span><span class="n">concat</span><span class="p">([</span><span class="n">x1</span><span class="p">,</span> <span class="n">x2</span><span class="p">,</span> <span class="n">x3</span><span class="p">,</span> <span class="n">x4</span><span class="p">,</span> <span class="n">x5</span><span class="p">],</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+
+<span class="n">control_OLS</span><span class="o">=</span><span class="n">pd</span><span class="o">.</span><span class="n">concat</span><span class="p">([</span><span class="n">control</span><span class="p">,</span><span class="n">p</span><span class="p">,</span><span class="n">group_share</span><span class="p">],</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[0]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1">#generate IV. IV are cost shifters and x_-j,t</span>
+<span class="n">mc_iv</span><span class="o">=</span><span class="p">[]</span>
+<span class="k">for</span> <span class="n">t</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">Choice_set</span><span class="p">)):</span>
+    <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">Choice_set</span><span class="p">[</span><span class="n">t</span><span class="p">])):</span>
+        <span class="n">temp</span><span class="o">=</span><span class="nb">list</span><span class="p">(</span><span class="n">w</span><span class="p">[</span><span class="n">t</span><span class="p">][</span><span class="n">j</span><span class="p">])</span>
+        <span class="n">mc_iv</span><span class="o">.</span><span class="n">extend</span><span class="p">(</span><span class="n">temp</span><span class="p">)</span>
+<span class="c1"># mc_iv=np.transpose(np.matrix(mc_iv))</span>
+<span class="n">mc_iv</span><span class="o">=</span><span class="n">pd</span><span class="o">.</span><span class="n">Series</span><span class="p">(</span><span class="n">mc_iv</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="s1">&#39;IV1&#39;</span><span class="p">)</span>
+
+<span class="n">mc_competitor_iv</span><span class="o">=</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">*</span><span class="nb">len</span><span class="p">(</span><span class="n">Choice_set</span><span class="p">)</span>
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">Choice_set</span><span class="p">)):</span>
+    <span class="n">mc_competitor_iv</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">*</span> <span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">Choice_set</span><span class="p">[</span><span class="n">i</span><span class="p">]))</span>
+
+<span class="k">for</span> <span class="n">t</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">Choice_set</span><span class="p">)):</span>
+    <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span> <span class="nb">len</span><span class="p">(</span><span class="n">Choice_set</span><span class="p">[</span><span class="n">t</span><span class="p">])):</span>
+        <span class="n">mc_competitor_iv</span><span class="p">[</span><span class="n">t</span><span class="p">][</span><span class="n">j</span><span class="p">]</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">w</span><span class="p">[</span><span class="n">t</span><span class="p">])</span><span class="o">-</span><span class="n">w</span><span class="p">[</span><span class="n">t</span><span class="p">][</span><span class="n">j</span><span class="p">]</span>
+
+<span class="n">mc_iv2</span><span class="o">=</span><span class="p">[]</span>
+<span class="k">for</span> <span class="n">t</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">Choice_set</span><span class="p">)):</span>
+    <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">Choice_set</span><span class="p">[</span><span class="n">t</span><span class="p">])):</span>
+        <span class="n">temp</span><span class="o">=</span><span class="nb">list</span><span class="p">(</span><span class="n">mc_competitor_iv</span><span class="p">[</span><span class="n">t</span><span class="p">][</span><span class="n">j</span><span class="p">])</span>
+        <span class="n">mc_iv2</span><span class="o">.</span><span class="n">extend</span><span class="p">(</span><span class="n">temp</span><span class="p">)</span>
+<span class="n">mc_iv2</span><span class="o">=</span><span class="n">pd</span><span class="o">.</span><span class="n">Series</span><span class="p">(</span><span class="n">mc_iv2</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="s1">&#39;IV2&#39;</span><span class="p">)</span>
+
+<span class="n">IV</span><span class="o">=</span><span class="n">pd</span><span class="o">.</span><span class="n">concat</span><span class="p">([</span><span class="n">mc_iv</span><span class="p">,</span><span class="n">mc_iv2</span><span class="p">],</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[0]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># !pip install linearmodels</span>
+<span class="kn">from</span> <span class="nn">linearmodels</span> <span class="k">import</span> <span class="n">IV2SLS</span>
+
+<span class="n">resultOLS</span> <span class="o">=</span> <span class="n">IV2SLS</span><span class="p">(</span><span class="n">delta</span><span class="p">,</span> <span class="n">control_OLS</span><span class="p">,</span> <span class="kc">None</span><span class="p">,</span> <span class="kc">None</span><span class="p">)</span>
+<span class="c1"># resultIV = IV2SLS(delta, control, endo, mc_iv)</span>
+<span class="c1"># resultIV2 = IV2SLS(delta, control, endo, mc_iv2)</span>
+<span class="n">resultIV3</span> <span class="o">=</span> <span class="n">IV2SLS</span><span class="p">(</span><span class="n">delta</span><span class="p">,</span> <span class="n">control</span><span class="p">,</span> <span class="n">endo</span><span class="p">,</span> <span class="n">IV</span><span class="p">)</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[0]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">res_2sls</span> <span class="o">=</span> <span class="n">resultIV3</span><span class="o">.</span><span class="n">fit</span><span class="p">()</span>
+<span class="c1"># alpha_est=res_2sls.params[6]</span>
+<span class="n">alpha_est</span><span class="o">=</span><span class="n">res_2sls</span><span class="o">.</span><span class="n">params</span><span class="p">[</span><span class="mi">5</span><span class="p">]</span>
+<span class="n">sigma_est</span><span class="o">=</span><span class="n">res_2sls</span><span class="o">.</span><span class="n">params</span><span class="p">[</span><span class="mi">6</span><span class="p">]</span>
+<span class="n">beta_est</span><span class="o">=</span><span class="p">[</span><span class="n">res_2sls</span><span class="o">.</span><span class="n">params</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">5</span><span class="p">)]</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">res_2sls</span><span class="p">)</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+<div class="prompt"></div>
+
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>                          IV-2SLS Estimation Summary                          
+==============================================================================
+Dep. Variable:                  Share   R-squared:                      0.2391
+Estimator:                    IV-2SLS   Adj. R-squared:                 0.2151
+No. Observations:                 197   F-statistic:                    926.77
+Date:                Sat, Dec 21 2019   P-value (F-stat)                0.0000
+Time:                        05:17:42   Distribution:                  chi2(7)
+Cov. Estimator:                robust                                         
+                                                                              
+                              Parameter Estimates                              
+===============================================================================
+             Parameter  Std. Err.     T-stat    P-value    Lower CI    Upper CI
+-------------------------------------------------------------------------------
+x1              1.9210     0.7672     2.5038     0.0123      0.4172      3.4247
+x2              2.0550     0.9284     2.2135     0.0269      0.2354      3.8746
+x3              2.1359     0.9203     2.3208     0.0203      0.3321      3.9397
+x4              0.2996     0.1358     2.2066     0.0273      0.0335      0.5657
+x5              0.4264     0.2025     2.1053     0.0353      0.0294      0.8233
+price          -0.4077     0.2234    -1.8255     0.0679     -0.8455      0.0300
+Group_share     0.4973     0.2555     1.9466     0.0516     -0.0034      0.9980
+===============================================================================
+
+Endogenous: price, Group_share
+Instruments: IV1, IV2
+Robust Covariance (Heteroskedastic)
+Debiased: False
+</pre>
+</div>
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Q5</p>
+<p>From the result, we can see that $\hat{\alpha}$ is -0.4077 which is statistically significant at 10% level. For $\hat{\sigma}$, the value is 0.4973 which is also statistically significant at 10% level.</p>
+<p>Q6</p>
+<p>The nested logit model assume that the own price derivatives are negative while the other cross price derivatives are positive which means that if the firm owns two products, these two are substitutes, but it may not be. Also, we can see that if the nested logit model with IV correctly specified the model, the coefficient for $\alpha$ should be the true parameter which is -1. If we run Monte Carlo, we may get positive $\alpha$ which is counterintuitive. This is because that the data generation process is full of randomness in our setting.</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[0]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1">#generate dsdp_est by nests and product</span>
+<span class="n">ds_est</span><span class="o">=</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">((</span><span class="nb">len</span><span class="p">(</span><span class="n">Choice_set</span><span class="p">[</span><span class="n">t</span><span class="p">]),</span><span class="nb">len</span><span class="p">(</span><span class="n">Choice_set</span><span class="p">[</span><span class="n">t</span><span class="p">])))</span> <span class="k">for</span> <span class="n">t</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">Choice_set</span><span class="p">))]</span>
+<span class="k">for</span> <span class="n">t</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">Choice_set</span><span class="p">)):</span>
+    <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">Choice_set</span><span class="p">[</span><span class="n">t</span><span class="p">])):</span>
+        <span class="k">for</span> <span class="n">k</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">Choice_set</span><span class="p">[</span><span class="n">t</span><span class="p">])):</span>
+            <span class="k">if</span> <span class="p">(</span><span class="n">j</span><span class="o">==</span><span class="mi">0</span> <span class="ow">and</span> <span class="n">k</span><span class="o">==</span><span class="mi">0</span><span class="p">):</span>
+                <span class="n">ds_est</span><span class="p">[</span><span class="n">t</span><span class="p">][</span><span class="n">j</span><span class="p">][</span><span class="n">k</span><span class="p">]</span><span class="o">=</span><span class="mi">1</span><span class="o">/</span><span class="p">(</span><span class="mi">1</span><span class="o">-</span><span class="n">sigma_est</span><span class="p">)</span><span class="o">*</span><span class="n">s1</span><span class="p">[</span><span class="n">t</span><span class="p">][</span><span class="n">j</span><span class="p">]</span><span class="o">*</span><span class="p">(</span><span class="mi">1</span><span class="o">-</span><span class="n">sigma_est</span><span class="o">*</span><span class="n">s_group</span><span class="p">[</span><span class="n">t</span><span class="p">][</span><span class="n">j</span><span class="p">]</span><span class="o">-</span><span class="p">(</span><span class="mi">1</span><span class="o">-</span><span class="n">sigma_est</span><span class="p">)</span><span class="o">*</span><span class="n">s1</span><span class="p">[</span><span class="n">t</span><span class="p">][</span><span class="n">j</span><span class="p">])</span>
+            <span class="k">if</span> <span class="p">(</span><span class="n">j</span><span class="o">==</span><span class="mi">0</span> <span class="ow">and</span> <span class="n">k</span><span class="o">!=</span><span class="mi">0</span><span class="p">):</span>
+                <span class="n">ds_est</span><span class="p">[</span><span class="n">t</span><span class="p">][</span><span class="n">j</span><span class="p">][</span><span class="n">k</span><span class="p">]</span><span class="o">=-</span><span class="n">s1</span><span class="p">[</span><span class="n">t</span><span class="p">][</span><span class="n">j</span><span class="p">]</span><span class="o">*</span><span class="n">s1</span><span class="p">[</span><span class="n">t</span><span class="p">][</span><span class="n">k</span><span class="p">]</span>
+            <span class="k">if</span> <span class="p">(</span><span class="n">index</span><span class="p">[</span><span class="n">t</span><span class="p">][</span><span class="n">j</span><span class="p">]</span><span class="o">&lt;</span><span class="mi">6</span> <span class="ow">and</span> <span class="n">index</span><span class="p">[</span><span class="n">t</span><span class="p">][</span><span class="n">j</span><span class="p">]</span><span class="o">&gt;</span><span class="mi">0</span><span class="p">):</span>
+                <span class="k">if</span> <span class="p">(</span><span class="n">index</span><span class="p">[</span><span class="n">t</span><span class="p">][</span><span class="n">k</span><span class="p">]</span><span class="o">&lt;</span><span class="mi">6</span> <span class="ow">and</span> <span class="n">index</span><span class="p">[</span><span class="n">t</span><span class="p">][</span><span class="n">k</span><span class="p">]</span><span class="o">&gt;</span><span class="mi">0</span><span class="p">):</span>                    
+                    <span class="k">if</span> <span class="p">(</span><span class="n">j</span><span class="o">==</span><span class="n">k</span><span class="p">):</span>
+                        <span class="n">ds_est</span><span class="p">[</span><span class="n">t</span><span class="p">][</span><span class="n">j</span><span class="p">][</span><span class="n">k</span><span class="p">]</span><span class="o">=</span><span class="mi">1</span><span class="o">/</span><span class="p">(</span><span class="mi">1</span><span class="o">-</span><span class="n">sigma_est</span><span class="p">)</span><span class="o">*</span><span class="n">s1</span><span class="p">[</span><span class="n">t</span><span class="p">][</span><span class="n">j</span><span class="p">]</span><span class="o">*</span><span class="p">(</span><span class="mi">1</span><span class="o">-</span><span class="n">sigma_est</span><span class="o">*</span><span class="n">s_group</span><span class="p">[</span><span class="n">t</span><span class="p">][</span><span class="n">j</span><span class="p">]</span><span class="o">-</span><span class="p">(</span><span class="mi">1</span><span class="o">-</span><span class="n">sigma_est</span><span class="p">)</span><span class="o">*</span><span class="n">s1</span><span class="p">[</span><span class="n">t</span><span class="p">][</span><span class="n">j</span><span class="p">])</span>
+                    <span class="k">if</span> <span class="p">(</span><span class="n">j</span><span class="o">!=</span><span class="n">k</span><span class="p">):</span>
+                        <span class="n">ds_est</span><span class="p">[</span><span class="n">t</span><span class="p">][</span><span class="n">j</span><span class="p">][</span><span class="n">k</span><span class="p">]</span><span class="o">=-</span><span class="n">s1</span><span class="p">[</span><span class="n">t</span><span class="p">][</span><span class="n">k</span><span class="p">]</span><span class="o">*</span><span class="p">(</span><span class="n">sigma_est</span><span class="o">/</span><span class="p">(</span><span class="mi">1</span><span class="o">-</span><span class="n">sigma_est</span><span class="p">)</span><span class="o">*</span><span class="n">s_group</span><span class="p">[</span><span class="n">t</span><span class="p">][</span><span class="n">j</span><span class="p">]</span> <span class="o">+</span> <span class="n">s1</span><span class="p">[</span><span class="n">t</span><span class="p">][</span><span class="n">j</span><span class="p">])</span>
+                <span class="k">if</span> <span class="p">(</span><span class="n">index</span><span class="p">[</span><span class="n">t</span><span class="p">][</span><span class="n">k</span><span class="p">]</span><span class="o">&gt;=</span><span class="mi">6</span> <span class="ow">or</span> <span class="n">index</span><span class="p">[</span><span class="n">t</span><span class="p">][</span><span class="n">k</span><span class="p">]</span><span class="o">==</span><span class="mi">0</span><span class="p">):</span>
+                    <span class="n">ds_est</span><span class="p">[</span><span class="n">t</span><span class="p">][</span><span class="n">j</span><span class="p">][</span><span class="n">k</span><span class="p">]</span><span class="o">=-</span><span class="n">s1</span><span class="p">[</span><span class="n">t</span><span class="p">][</span><span class="n">j</span><span class="p">]</span><span class="o">*</span><span class="n">s1</span><span class="p">[</span><span class="n">t</span><span class="p">][</span><span class="n">k</span><span class="p">]</span>
+            <span class="k">if</span> <span class="p">(</span><span class="n">index</span><span class="p">[</span><span class="n">t</span><span class="p">][</span><span class="n">j</span><span class="p">]</span><span class="o">&gt;=</span><span class="mi">6</span><span class="p">):</span>
+                <span class="k">if</span> <span class="p">(</span><span class="n">index</span><span class="p">[</span><span class="n">t</span><span class="p">][</span><span class="n">k</span><span class="p">]</span><span class="o">&gt;=</span><span class="mi">6</span><span class="p">):</span>
+                    <span class="k">if</span> <span class="p">(</span><span class="n">j</span><span class="o">==</span><span class="n">k</span><span class="p">):</span>
+                        <span class="n">ds_est</span><span class="p">[</span><span class="n">t</span><span class="p">][</span><span class="n">j</span><span class="p">][</span><span class="n">k</span><span class="p">]</span><span class="o">=</span><span class="mi">1</span><span class="o">/</span><span class="p">(</span><span class="mi">1</span><span class="o">-</span><span class="n">sigma_est</span><span class="p">)</span><span class="o">*</span><span class="n">s1</span><span class="p">[</span><span class="n">t</span><span class="p">][</span><span class="n">j</span><span class="p">]</span><span class="o">*</span><span class="p">(</span><span class="mi">1</span><span class="o">-</span><span class="n">sigma_est</span><span class="o">*</span><span class="n">s_group</span><span class="p">[</span><span class="n">t</span><span class="p">][</span><span class="n">j</span><span class="p">]</span><span class="o">-</span><span class="p">(</span><span class="mi">1</span><span class="o">-</span><span class="n">sigma_est</span><span class="p">)</span><span class="o">*</span><span class="n">s1</span><span class="p">[</span><span class="n">t</span><span class="p">][</span><span class="n">j</span><span class="p">])</span>
+                    <span class="k">if</span> <span class="p">(</span><span class="n">j</span><span class="o">!=</span><span class="n">k</span><span class="p">):</span>
+                        <span class="n">ds_est</span><span class="p">[</span><span class="n">t</span><span class="p">][</span><span class="n">j</span><span class="p">][</span><span class="n">k</span><span class="p">]</span><span class="o">=</span><span class="n">s1</span><span class="p">[</span><span class="n">t</span><span class="p">][</span><span class="n">k</span><span class="p">]</span><span class="o">*</span><span class="p">(</span><span class="n">sigma_est</span><span class="o">/</span><span class="p">(</span><span class="mi">1</span><span class="o">-</span><span class="n">sigma_est</span><span class="p">)</span><span class="o">*</span><span class="n">s_group</span><span class="p">[</span><span class="n">t</span><span class="p">][</span><span class="n">j</span><span class="p">]</span> <span class="o">+</span> <span class="n">s1</span><span class="p">[</span><span class="n">t</span><span class="p">][</span><span class="n">j</span><span class="p">])</span>
+                <span class="k">if</span> <span class="p">(</span><span class="n">index</span><span class="p">[</span><span class="n">t</span><span class="p">][</span><span class="n">k</span><span class="p">]</span><span class="o">&lt;</span><span class="mi">6</span><span class="p">):</span>
+                    <span class="n">ds_est</span><span class="p">[</span><span class="n">t</span><span class="p">][</span><span class="n">j</span><span class="p">][</span><span class="n">k</span><span class="p">]</span><span class="o">=</span><span class="n">s1</span><span class="p">[</span><span class="n">t</span><span class="p">][</span><span class="n">j</span><span class="p">]</span><span class="o">*</span><span class="n">s1</span><span class="p">[</span><span class="n">t</span><span class="p">][</span><span class="n">k</span><span class="p">]</span>
+
+<span class="c1"># for t in range(len(Choice_set)):</span>
+<span class="c1">#     for j in range(len(Choice_set[t])):</span>
+<span class="c1">#         for k in range(len(Choice_set[t])):</span>
+<span class="c1">#             if (j==0 and k==0):</span>
+<span class="c1">#                 ds_est[t][j][k]=1/(1-sigma_est)*s1[t][j]*(1-sigma_est*s_group[t][j]-(1-sigma_est)*s1[t][j])</span>
+<span class="c1">#             if (j==0 and k!=0):</span>
+<span class="c1">#                 ds_est[t][j][k]=-s1[t][j]*s1[t][k]</span>
+<span class="n">dsdp_est</span><span class="o">=</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">((</span><span class="nb">len</span><span class="p">(</span><span class="n">Choice_set</span><span class="p">[</span><span class="n">t</span><span class="p">]),</span><span class="nb">len</span><span class="p">(</span><span class="n">Choice_set</span><span class="p">[</span><span class="n">t</span><span class="p">])))</span> <span class="k">for</span> <span class="n">t</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">Choice_set</span><span class="p">))]</span>
+<span class="n">dsdp_est</span><span class="o">=</span><span class="p">[[[</span><span class="n">ownership</span><span class="p">[</span><span class="n">t</span><span class="p">][</span><span class="n">i</span><span class="p">][</span><span class="n">j</span><span class="p">]</span><span class="o">*</span><span class="n">ds_est</span><span class="p">[</span><span class="n">t</span><span class="p">][</span><span class="n">i</span><span class="p">][</span><span class="n">j</span><span class="p">]</span><span class="o">*</span><span class="n">alpha_est</span> <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">Choice_set</span><span class="p">[</span><span class="n">t</span><span class="p">]))]</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">Choice_set</span><span class="p">[</span><span class="n">t</span><span class="p">]))]</span> <span class="k">for</span> <span class="n">t</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">Choice_set</span><span class="p">))]</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[0]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">dsdp</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+<div class="prompt output_prompt">Out[0]:</div>
+
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>[[-0.05469042336843703, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0],
+ [0.0, -0.07003959923302364, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0],
+ [0.0, 0.0, -0.07026391765397733, 0.0, 0.0, 0.0, 0.0, 0.0],
+ [0.0, 0.0, 0.0, -0.08151515540890474, 0.0, 0.0, 0.014725328021349671, 0.0],
+ [0.0, 0.0, 0.0, 0.0, -0.07970174683956575, 0.0, 0.0, 0.012382983391105471],
+ [0.0, 0.0, 0.0, 0.0, 0.0, -0.10499014834576709, 0.0, 0.0],
+ [0.0, 0.0, 0.0, 0.014725328021349671, 0.0, 0.0, -0.09316074880555854, 0.0],
+ [0.0, 0.0, 0.0, 0.0, 0.012382983391105471, 0.0, 0.0, -0.07485016903251678]]</pre>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[0]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">dsdp_est</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+<div class="prompt output_prompt">Out[0]:</div>
+
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>[[-0.06170634305792473, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0],
+ [0.0, -0.10543215270077987, -0.0, 0.0, 0.0, 0.0, 0.0, 0.0],
+ [0.0, -0.0, -0.11116650924509223, 0.0, 0.0, 0.0, 0.0, 0.0],
+ [-0.0, -0.0, -0.0, -0.19258275010091924, 0.0, 0.0, 0.10780307597221923, 0.0],
+ [-0.0, -0.0, -0.0, 0.0, -0.17680388423830704, 0.0, 0.0, 0.07520885691766994],
+ [-0.0, -0.0, -0.0, 0.0, 0.0, -0.2279144263800897, 0.0, 0.0],
+ [-0.0, -0.0, -0.0, 0.06699505559118338, 0.0, 0.0, -0.22836803705017286, 0.0],
+ [-0.0, -0.0, -0.0, 0.0, 0.083719703146325, 0.0, 0.0, -0.16896503630079368]]</pre>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Q7</p>
+<p>we use the $\hat{\sigma}$ and $\hat{\alpha}$ to recalculate the own and cross price derivative matrix. $dsdp$ is the simulated one in Q4 while the $dsdp_est$ is the estimated one. We only show the matrix for market 1. We can see that the absolute value for $\frac{ds_{jt}}{dp_{kt}}$ becomes larger no matter $j$ and $k$ are in the same nest or not. For the diagnal one, all are negative while for the non-diagnal one, all are positive. This is consistent with this:</p>
+<p>$$ \frac{ds_{jt}}{dp_{kt}}=\left\{
+\begin{aligned}
+&amp; =  -\alpha s_{jt}(\frac{1}{1-\sigma}-\frac{\sigma}{1-\sigma}s_{jt|g}-s_{jt}), if \quad j=k \\
+&amp; = \alpha s_{kt}(\frac{\sigma}{1-\sigma}s_{jt|g}+s_{jt}), if \quad j\quad k \quad in \quad the \quad same \quad nest \\
+&amp; = \alpha s_{jt} s_{kt}, otherwise 
+\end{aligned}
+\right.
+$$</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[0]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1">#set post-buyout Choice set. Assume brewery in local market 1 is the buyout BB2</span>
+<span class="n">Local_market_p</span> <span class="o">=</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">12</span><span class="p">,</span> <span class="mi">14</span><span class="p">,</span> <span class="mi">23</span><span class="p">]</span>
+<span class="n">Coporate_p</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;AB&#39;</span><span class="p">,</span> <span class="s1">&#39;MC&#39;</span><span class="p">,</span> <span class="s1">&#39;BB&#39;</span><span class="p">,</span> <span class="s1">&#39;AB2&#39;</span><span class="p">,</span> <span class="s1">&#39;MC2&#39;</span><span class="p">,</span> <span class="s1">&#39;BB2&#39;</span><span class="p">]</span>
+<span class="n">Available_product_p</span> <span class="o">=</span> <span class="n">Local_market_p</span> <span class="o">+</span> <span class="n">Coporate_p</span>
+
+<span class="n">Choice_set_p</span><span class="o">=</span><span class="p">[[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">12</span><span class="p">]</span> <span class="o">+</span> <span class="n">Coporate_p</span><span class="p">,</span>
+            <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">12</span><span class="p">]</span> <span class="o">+</span> <span class="n">Coporate_p</span><span class="p">,</span>
+            <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">12</span><span class="p">,</span> <span class="mi">14</span><span class="p">]</span> <span class="o">+</span> <span class="n">Coporate_p</span><span class="p">,</span>
+            <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">14</span><span class="p">]</span> <span class="o">+</span> <span class="n">Coporate_p</span><span class="p">,</span>
+            <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">14</span><span class="p">]</span> <span class="o">+</span> <span class="n">Coporate_p</span><span class="p">,</span>
+            <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">12</span><span class="p">]</span> <span class="o">+</span> <span class="n">Coporate_p</span><span class="p">,</span>
+            <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">12</span><span class="p">,</span> <span class="mi">14</span><span class="p">]</span> <span class="o">+</span> <span class="n">Coporate_p</span><span class="p">,</span>
+            <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">12</span><span class="p">,</span> <span class="mi">14</span><span class="p">,</span> <span class="mi">23</span><span class="p">]</span> <span class="o">+</span> <span class="n">Coporate_p</span><span class="p">,</span>
+            <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">12</span><span class="p">,</span> <span class="mi">14</span><span class="p">]</span> <span class="o">+</span> <span class="n">Coporate_p</span><span class="p">,</span>
+            <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">14</span><span class="p">]</span> <span class="o">+</span> <span class="n">Coporate_p</span><span class="p">,</span>
+            <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">12</span><span class="p">,</span> <span class="mi">14</span><span class="p">]</span> <span class="o">+</span> <span class="n">Coporate_p</span><span class="p">,</span>
+            <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">12</span><span class="p">,</span> <span class="mi">14</span><span class="p">,</span> <span class="mi">23</span><span class="p">]</span> <span class="o">+</span> <span class="n">Coporate_p</span><span class="p">,</span>
+            <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">12</span><span class="p">,</span> <span class="mi">14</span><span class="p">,</span> <span class="mi">23</span><span class="p">]</span> <span class="o">+</span> <span class="n">Coporate_p</span><span class="p">,</span>
+            <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">12</span><span class="p">,</span> <span class="mi">14</span><span class="p">,</span> <span class="mi">23</span><span class="p">]</span> <span class="o">+</span> <span class="n">Coporate_p</span><span class="p">,</span>
+            <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">12</span><span class="p">,</span> <span class="mi">14</span><span class="p">]</span> <span class="o">+</span> <span class="n">Coporate_p</span><span class="p">,</span>
+            <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">12</span><span class="p">,</span> <span class="mi">23</span><span class="p">]</span> <span class="o">+</span> <span class="n">Coporate_p</span><span class="p">,</span>
+            <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">12</span><span class="p">,</span> <span class="mi">14</span><span class="p">,</span> <span class="mi">23</span><span class="p">]</span> <span class="o">+</span> <span class="n">Coporate_p</span><span class="p">,</span>
+            <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">12</span><span class="p">,</span> <span class="mi">14</span><span class="p">,</span> <span class="mi">23</span><span class="p">]</span> <span class="o">+</span> <span class="n">Coporate_p</span><span class="p">,</span>
+            <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">12</span><span class="p">,</span> <span class="mi">14</span><span class="p">,</span> <span class="mi">23</span><span class="p">]</span> <span class="o">+</span> <span class="n">Coporate_p</span><span class="p">,</span>
+            <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">14</span><span class="p">,</span> <span class="mi">23</span><span class="p">]</span> <span class="o">+</span> <span class="n">Coporate_p</span><span class="p">,</span>
+            <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">12</span><span class="p">,</span> <span class="mi">23</span><span class="p">]</span> <span class="o">+</span> <span class="n">Coporate_p</span><span class="p">,</span>
+            <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">12</span><span class="p">,</span> <span class="mi">23</span><span class="p">]</span> <span class="o">+</span> <span class="n">Coporate_p</span><span class="p">,</span>
+            <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">12</span><span class="p">,</span> <span class="mi">14</span><span class="p">,</span> <span class="mi">23</span><span class="p">]</span> <span class="o">+</span> <span class="n">Coporate_p</span><span class="p">,</span>
+            <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">14</span><span class="p">,</span> <span class="mi">23</span><span class="p">]</span> <span class="o">+</span> <span class="n">Coporate_p</span><span class="p">,</span>
+            <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">14</span><span class="p">,</span> <span class="mi">23</span><span class="p">]</span> <span class="o">+</span> <span class="n">Coporate_p</span><span class="p">]</span>
+
+<span class="c1">#generate product characteristics</span>
+<span class="n">dummies_p</span> <span class="o">=</span> <span class="p">[[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">],</span>
+            <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">uniform</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">)</span><span class="o">.</span><span class="n">item</span><span class="p">(),</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">uniform</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">)</span><span class="o">.</span><span class="n">item</span><span class="p">()],</span>
+            <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">uniform</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">)</span><span class="o">.</span><span class="n">item</span><span class="p">(),</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">uniform</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">)</span><span class="o">.</span><span class="n">item</span><span class="p">()],</span>
+            <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">uniform</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">)</span><span class="o">.</span><span class="n">item</span><span class="p">(),</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">uniform</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">)</span><span class="o">.</span><span class="n">item</span><span class="p">()],</span>
+            <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">uniform</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">)</span><span class="o">.</span><span class="n">item</span><span class="p">(),</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">uniform</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">)</span><span class="o">.</span><span class="n">item</span><span class="p">()],</span>
+            <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">uniform</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">)</span><span class="o">.</span><span class="n">item</span><span class="p">(),</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">uniform</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">)</span><span class="o">.</span><span class="n">item</span><span class="p">()],</span>
+            <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">uniform</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">)</span><span class="o">.</span><span class="n">item</span><span class="p">(),</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">uniform</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">)</span><span class="o">.</span><span class="n">item</span><span class="p">()],</span>
+            <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">uniform</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">)</span><span class="o">.</span><span class="n">item</span><span class="p">(),</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">uniform</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">)</span><span class="o">.</span><span class="n">item</span><span class="p">()],</span>
+            <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">uniform</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">)</span><span class="o">.</span><span class="n">item</span><span class="p">(),</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">uniform</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">)</span><span class="o">.</span><span class="n">item</span><span class="p">()],</span>
+            <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">uniform</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">)</span><span class="o">.</span><span class="n">item</span><span class="p">(),</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">uniform</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">)</span><span class="o">.</span><span class="n">item</span><span class="p">()],</span>
+            <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">uniform</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">)</span><span class="o">.</span><span class="n">item</span><span class="p">(),</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">uniform</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">)</span><span class="o">.</span><span class="n">item</span><span class="p">()]]</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[0]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1">#generate new initial price value and begin iteration</span>
+<span class="n">p_initial_p</span> <span class="o">=</span> <span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">*</span> <span class="nb">len</span><span class="p">(</span><span class="n">Choice_set_p</span><span class="p">)</span>
+<span class="n">s_temp_p</span> <span class="o">=</span> <span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">*</span> <span class="nb">len</span><span class="p">(</span><span class="n">Choice_set_p</span><span class="p">)</span>
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">Choice_set</span><span class="p">)):</span>
+    <span class="n">p_initial_p</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">*</span> <span class="nb">len</span><span class="p">(</span><span class="n">Choice_set_p</span><span class="p">[</span><span class="n">i</span><span class="p">])</span>
+    <span class="n">s_temp_p</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">*</span> <span class="nb">len</span><span class="p">(</span><span class="n">Choice_set_p</span><span class="p">[</span><span class="n">i</span><span class="p">])</span>
+
+<span class="c1">#create the map of Available_product_p index to the Choice_set_p index</span>
+<span class="n">index_p</span><span class="o">=</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">*</span><span class="nb">len</span><span class="p">(</span><span class="n">Choice_set_p</span><span class="p">)</span>
+<span class="n">elem</span> <span class="o">=</span> <span class="p">{</span><span class="n">k</span><span class="p">:</span> <span class="n">i</span> <span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">k</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">Available_product_p</span><span class="p">)}</span>
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">Choice_set_p</span><span class="p">)):</span>
+      <span class="n">index_p</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="nb">map</span><span class="p">(</span><span class="n">elem</span><span class="o">.</span><span class="n">get</span><span class="p">,</span> <span class="n">Choice_set_p</span><span class="p">[</span><span class="n">i</span><span class="p">]))</span>
+
+<span class="c1">#p=mc</span>
+<span class="k">for</span> <span class="n">t</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">Choice_set_p</span><span class="p">)):</span>
+    <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">Choice_set_p</span><span class="p">[</span><span class="n">t</span><span class="p">])):</span>
+        <span class="n">p_initial_p</span><span class="p">[</span><span class="n">t</span><span class="p">][</span><span class="n">j</span><span class="p">]</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">normal</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">)</span><span class="o">/</span><span class="mi">8</span><span class="p">)</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">normal</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">)</span><span class="o">/</span><span class="mi">10</span><span class="p">)</span> 
+</pre></div>
+
+</div>
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[0]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1">#generate post-buyout ownership matrix</span>
+<span class="n">ownership_post</span><span class="o">=</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">identity</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">Choice_set_p</span><span class="p">[</span><span class="n">t</span><span class="p">]))</span> <span class="k">for</span> <span class="n">t</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">Choice_set</span><span class="p">))]</span>
+<span class="k">for</span> <span class="n">t</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">Choice_set_p</span><span class="p">)):</span>
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">Choice_set_p</span><span class="p">[</span><span class="n">t</span><span class="p">])):</span>
+        <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">Choice_set_p</span><span class="p">[</span><span class="n">t</span><span class="p">])):</span>
+            <span class="k">if</span> <span class="p">(</span><span class="n">Choice_set_p</span><span class="p">[</span><span class="n">t</span><span class="p">][</span><span class="n">i</span><span class="p">]</span><span class="o">==</span><span class="s2">&quot;AB&quot;</span> <span class="ow">and</span> <span class="n">Choice_set_p</span><span class="p">[</span><span class="n">t</span><span class="p">][</span><span class="n">j</span><span class="p">]</span><span class="o">==</span><span class="s1">&#39;AB2&#39;</span><span class="p">):</span>
+                <span class="n">ownership_post</span><span class="p">[</span><span class="n">t</span><span class="p">][</span><span class="n">i</span><span class="p">][</span><span class="n">j</span><span class="p">]</span><span class="o">=</span><span class="mi">1</span>
+                <span class="n">ownership_post</span><span class="p">[</span><span class="n">t</span><span class="p">][</span><span class="n">j</span><span class="p">][</span><span class="n">i</span><span class="p">]</span><span class="o">=</span><span class="mi">1</span>
+            <span class="k">if</span> <span class="p">(</span><span class="n">Choice_set_p</span><span class="p">[</span><span class="n">t</span><span class="p">][</span><span class="n">i</span><span class="p">]</span><span class="o">==</span><span class="s2">&quot;MC&quot;</span> <span class="ow">and</span> <span class="n">Choice_set_p</span><span class="p">[</span><span class="n">t</span><span class="p">][</span><span class="n">j</span><span class="p">]</span><span class="o">==</span><span class="s1">&#39;MC2&#39;</span><span class="p">):</span>
+                <span class="n">ownership_post</span><span class="p">[</span><span class="n">t</span><span class="p">][</span><span class="n">i</span><span class="p">][</span><span class="n">j</span><span class="p">]</span><span class="o">=</span><span class="mi">1</span>
+                <span class="n">ownership_post</span><span class="p">[</span><span class="n">t</span><span class="p">][</span><span class="n">j</span><span class="p">][</span><span class="n">i</span><span class="p">]</span><span class="o">=</span><span class="mi">1</span>
+            <span class="k">if</span> <span class="p">(</span><span class="n">Choice_set_p</span><span class="p">[</span><span class="n">t</span><span class="p">][</span><span class="n">i</span><span class="p">]</span><span class="o">==</span><span class="s2">&quot;BB&quot;</span> <span class="ow">and</span> <span class="n">Choice_set_p</span><span class="p">[</span><span class="n">t</span><span class="p">][</span><span class="n">j</span><span class="p">]</span><span class="o">==</span><span class="s1">&#39;BB2&#39;</span><span class="p">):</span>
+                <span class="n">ownership_post</span><span class="p">[</span><span class="n">t</span><span class="p">][</span><span class="n">i</span><span class="p">][</span><span class="n">j</span><span class="p">]</span><span class="o">=</span><span class="mi">1</span>
+                <span class="n">ownership_post</span><span class="p">[</span><span class="n">t</span><span class="p">][</span><span class="n">j</span><span class="p">][</span><span class="n">i</span><span class="p">]</span><span class="o">=</span><span class="mi">1</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[0]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1">#generate the individual initial share for each product in each market by randomly assigning price </span>
+<span class="k">def</span> <span class="nf">id_share_p</span><span class="p">(</span><span class="n">Choice_set</span><span class="p">,</span> <span class="n">dummies</span><span class="p">,</span> <span class="n">p_initial</span><span class="p">,</span> <span class="n">index</span><span class="p">,</span> <span class="n">s_temp</span><span class="p">):</span>
+    <span class="k">for</span> <span class="n">t</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">Choice_set</span><span class="p">)):</span>
+        <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">Choice_set</span><span class="p">[</span><span class="n">t</span><span class="p">])):</span>
+            <span class="n">s_temp</span><span class="p">[</span><span class="n">t</span><span class="p">][</span><span class="n">j</span><span class="p">]</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">beta_est</span><span class="p">)</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">dummies</span><span class="p">[</span><span class="n">index</span><span class="p">[</span><span class="n">t</span><span class="p">][</span><span class="n">j</span><span class="p">]]))</span><span class="o">+</span><span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">beta_un</span><span class="p">)</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">normal</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">3</span><span class="p">))</span><span class="o">+</span><span class="n">alpha_est</span><span class="o">*</span><span class="n">p_initial</span><span class="p">[</span><span class="n">t</span><span class="p">][</span><span class="n">j</span><span class="p">]</span><span class="o">+</span><span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">normal</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">))</span>
+    <span class="n">s_id</span><span class="o">=</span><span class="p">[]</span>
+    <span class="n">s_id</span><span class="o">=</span><span class="p">[[</span><span class="n">s_temp</span><span class="p">[</span><span class="n">t</span><span class="p">][</span><span class="n">j</span><span class="p">]</span><span class="o">/</span><span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">s_temp</span><span class="p">[</span><span class="n">t</span><span class="p">])</span> <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">Choice_set</span><span class="p">[</span><span class="n">t</span><span class="p">]))]</span> <span class="k">for</span> <span class="n">t</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">Choice_set</span><span class="p">))]</span>
+    <span class="k">return</span> <span class="n">s_id</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[0]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1">#use old price to generate new price without change cost structure</span>
+<span class="k">def</span> <span class="nf">new_price_p1</span><span class="p">(</span><span class="n">Choice_set</span><span class="p">,</span> <span class="n">dummies</span><span class="p">,</span> <span class="n">p_initial</span><span class="p">,</span> <span class="n">ownership</span><span class="p">,</span> <span class="n">index</span><span class="p">,</span> <span class="n">s_temp</span><span class="p">,</span> <span class="n">I</span><span class="p">):</span>
+    <span class="n">s_all_id</span><span class="o">=</span><span class="p">[]</span>
+    <span class="n">s_all_id</span><span class="o">=</span><span class="p">[</span><span class="n">id_share_p</span><span class="p">(</span><span class="n">Choice_set</span><span class="p">,</span> <span class="n">dummies</span><span class="p">,</span> <span class="n">p_initial</span><span class="p">,</span> <span class="n">index</span><span class="p">,</span> <span class="n">s_temp</span><span class="p">)</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">I</span><span class="p">)]</span>
+    <span class="c1"># s_all_id[0][0][0]</span>
+    
+    <span class="c1">#market share</span>
+    <span class="n">s_initial</span><span class="o">=</span><span class="p">[]</span>
+    <span class="n">s_initial</span><span class="o">=</span><span class="p">[[</span><span class="nb">sum</span><span class="p">(</span><span class="n">s_all_id</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="n">t</span><span class="p">][</span><span class="n">j</span><span class="p">]</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">I</span><span class="p">))</span><span class="o">/</span><span class="n">I</span> <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">Choice_set</span><span class="p">[</span><span class="n">t</span><span class="p">]))]</span> <span class="k">for</span> <span class="n">t</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">Choice_set</span><span class="p">))]</span>
+
+    <span class="c1">#generate ds/dp matrix</span>
+    <span class="n">ds</span><span class="o">=</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">((</span><span class="nb">len</span><span class="p">(</span><span class="n">Choice_set</span><span class="p">[</span><span class="n">t</span><span class="p">]),</span><span class="nb">len</span><span class="p">(</span><span class="n">Choice_set</span><span class="p">[</span><span class="n">t</span><span class="p">])))</span> <span class="k">for</span> <span class="n">t</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">Choice_set</span><span class="p">))]</span>
+    <span class="k">for</span> <span class="n">t</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">Choice_set</span><span class="p">)):</span>
+        <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">Choice_set</span><span class="p">[</span><span class="n">t</span><span class="p">])):</span>
+            <span class="k">for</span> <span class="n">k</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">Choice_set</span><span class="p">[</span><span class="n">t</span><span class="p">])):</span>
+                <span class="k">if</span> <span class="p">(</span><span class="n">j</span><span class="o">==</span><span class="n">k</span><span class="p">):</span>
+                    <span class="n">ds</span><span class="p">[</span><span class="n">t</span><span class="p">][</span><span class="n">j</span><span class="p">][</span><span class="n">k</span><span class="p">]</span><span class="o">=</span><span class="nb">sum</span><span class="p">(</span><span class="n">s_all_id</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="n">t</span><span class="p">][</span><span class="n">k</span><span class="p">]</span><span class="o">*</span><span class="n">s_all_id</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="n">t</span><span class="p">][</span><span class="n">j</span><span class="p">]</span><span class="o">-</span><span class="n">s_all_id</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="n">t</span><span class="p">][</span><span class="n">k</span><span class="p">]</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">I</span><span class="p">))</span><span class="o">/</span><span class="n">I</span>
+                <span class="k">if</span> <span class="p">(</span><span class="n">j</span><span class="o">!=</span><span class="n">k</span><span class="p">):</span>
+                    <span class="n">ds</span><span class="p">[</span><span class="n">t</span><span class="p">][</span><span class="n">j</span><span class="p">][</span><span class="n">k</span><span class="p">]</span><span class="o">=</span><span class="nb">sum</span><span class="p">(</span><span class="n">s_all_id</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="n">t</span><span class="p">][</span><span class="n">k</span><span class="p">]</span><span class="o">*</span><span class="n">s_all_id</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="n">t</span><span class="p">][</span><span class="n">j</span><span class="p">]</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">I</span><span class="p">))</span><span class="o">/</span><span class="n">I</span>
+
+    <span class="c1">#multiply ownership matrix and ds/dp matrix element  by element</span>
+    <span class="n">dsdp</span><span class="o">=</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">((</span><span class="nb">len</span><span class="p">(</span><span class="n">Choice_set</span><span class="p">[</span><span class="n">t</span><span class="p">]),</span><span class="nb">len</span><span class="p">(</span><span class="n">Choice_set</span><span class="p">[</span><span class="n">t</span><span class="p">])))</span> <span class="k">for</span> <span class="n">t</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">Choice_set</span><span class="p">))]</span>
+    <span class="n">dsdp</span><span class="o">=</span><span class="p">[[[</span><span class="n">ownership</span><span class="p">[</span><span class="n">t</span><span class="p">][</span><span class="n">i</span><span class="p">][</span><span class="n">j</span><span class="p">]</span><span class="o">*</span><span class="n">ds</span><span class="p">[</span><span class="n">t</span><span class="p">][</span><span class="n">i</span><span class="p">][</span><span class="n">j</span><span class="p">]</span> <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">Choice_set</span><span class="p">[</span><span class="n">t</span><span class="p">]))]</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">Choice_set</span><span class="p">[</span><span class="n">t</span><span class="p">]))]</span> <span class="k">for</span> <span class="n">t</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">Choice_set</span><span class="p">))]</span>
+
+    <span class="c1"># dsdp_inverse=[np.zeros((len(Choice_set[t]),len(Choice_set[t]))) for t in range(len(Choice_set))]</span>
+    <span class="c1"># for t in range(len(Choice_set)):</span>
+    <span class="c1">#     for i in range(len(Choice_set[t])):</span>
+    <span class="c1">#         for j in range(len(Choice_set[t])):</span>
+    <span class="c1">#             if dsdp[t][i][j]!=0:</span>
+    <span class="c1">#                 dsdp_inverse[t][i][j]=dsdp[t][i][j]**(-1)</span>
+    <span class="n">dsdp_inverse</span><span class="o">=</span><span class="p">[]</span>
+    <span class="n">dsdp_inverse</span><span class="o">=</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">linalg</span><span class="o">.</span><span class="n">inv</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">dsdp</span><span class="p">[</span><span class="n">t</span><span class="p">]))</span> <span class="k">for</span> <span class="n">t</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">Choice_set</span><span class="p">))]</span>
+
+    <span class="c1">#generate p_new</span>
+    <span class="n">omega</span><span class="o">=</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">*</span><span class="nb">len</span><span class="p">(</span><span class="n">Choice_set</span><span class="p">)</span>
+    <span class="n">w</span><span class="o">=</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">*</span><span class="nb">len</span><span class="p">(</span><span class="n">Choice_set</span><span class="p">)</span>
+    <span class="n">mc</span><span class="o">=</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">*</span><span class="nb">len</span><span class="p">(</span><span class="n">Choice_set</span><span class="p">)</span>
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">Choice_set</span><span class="p">)):</span>
+        <span class="n">omega</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">*</span> <span class="nb">len</span><span class="p">(</span><span class="n">Choice_set</span><span class="p">[</span><span class="n">i</span><span class="p">])</span>
+        <span class="n">w</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">*</span> <span class="nb">len</span><span class="p">(</span><span class="n">Choice_set</span><span class="p">[</span><span class="n">i</span><span class="p">])</span>
+        <span class="n">mc</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">*</span> <span class="nb">len</span><span class="p">(</span><span class="n">Choice_set</span><span class="p">[</span><span class="n">i</span><span class="p">])</span>
+
+    <span class="k">for</span> <span class="n">t</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">Choice_set</span><span class="p">)):</span>
+        <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">Choice_set</span><span class="p">[</span><span class="n">t</span><span class="p">])):</span>
+            <span class="n">omega</span><span class="p">[</span><span class="n">t</span><span class="p">][</span><span class="n">j</span><span class="p">]</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">normal</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">)</span><span class="o">/</span><span class="mi">10</span><span class="p">)</span>
+            <span class="n">w</span><span class="p">[</span><span class="n">t</span><span class="p">][</span><span class="n">j</span><span class="p">]</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">normal</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">)</span><span class="o">/</span><span class="mi">8</span><span class="p">)</span>
+            <span class="k">if</span> <span class="p">(</span><span class="n">index</span><span class="p">[</span><span class="n">t</span><span class="p">][</span><span class="n">j</span><span class="p">]</span><span class="o">&lt;</span><span class="mi">5</span> <span class="ow">and</span> <span class="n">index</span><span class="p">[</span><span class="n">t</span><span class="p">][</span><span class="n">j</span><span class="o">&gt;</span><span class="mi">0</span><span class="p">]):</span>
+                <span class="n">mc</span><span class="p">[</span><span class="n">t</span><span class="p">][</span><span class="n">j</span><span class="p">]</span><span class="o">=</span><span class="n">omega</span><span class="p">[</span><span class="n">t</span><span class="p">][</span><span class="n">j</span><span class="p">]</span><span class="o">*</span><span class="n">w</span><span class="p">[</span><span class="n">t</span><span class="p">][</span><span class="n">j</span><span class="p">]</span>
+            <span class="k">if</span> <span class="p">(</span><span class="n">index</span><span class="p">[</span><span class="n">t</span><span class="p">][</span><span class="n">j</span><span class="p">]</span><span class="o">&gt;=</span><span class="mi">5</span> <span class="ow">and</span> <span class="n">index</span><span class="p">[</span><span class="n">t</span><span class="p">][</span><span class="n">j</span><span class="p">]</span><span class="o">&lt;</span><span class="mi">10</span><span class="p">):</span>
+                <span class="n">mc</span><span class="p">[</span><span class="n">t</span><span class="p">][</span><span class="n">j</span><span class="p">]</span><span class="o">=</span><span class="n">omega</span><span class="p">[</span><span class="n">t</span><span class="p">][</span><span class="n">j</span><span class="p">]</span><span class="o">*</span><span class="n">w</span><span class="p">[</span><span class="n">t</span><span class="p">][</span><span class="n">j</span><span class="p">]</span><span class="o">*</span><span class="mf">0.85</span>
+            <span class="k">if</span> <span class="p">(</span><span class="n">index</span><span class="p">[</span><span class="n">t</span><span class="p">][</span><span class="n">j</span><span class="p">]</span><span class="o">==</span><span class="mi">0</span><span class="p">):</span>
+                <span class="n">mc</span><span class="p">[</span><span class="n">t</span><span class="p">][</span><span class="n">j</span><span class="p">]</span><span class="o">=</span><span class="mi">0</span>
+            <span class="k">elif</span> <span class="p">(</span><span class="n">index</span><span class="p">[</span><span class="n">t</span><span class="p">][</span><span class="n">j</span><span class="p">]</span><span class="o">==</span><span class="mi">10</span><span class="p">):</span>
+                <span class="n">mc</span><span class="p">[</span><span class="n">t</span><span class="p">][</span><span class="n">j</span><span class="p">]</span><span class="o">=</span><span class="n">omega</span><span class="p">[</span><span class="n">t</span><span class="p">][</span><span class="n">j</span><span class="p">]</span><span class="o">*</span><span class="n">w</span><span class="p">[</span><span class="n">t</span><span class="p">][</span><span class="n">j</span><span class="p">]</span>
+    <span class="c1"># mc=[[np.exp(np.random.normal(0,1,1)/8)*np.exp(np.random.normal(0,1,1)/10) for j in range(len(Choice_set[t]))] for t in range(len(Choice_set))]</span>
+    <span class="c1"># p=[mc[t]-np.matmul(np.array(dsdp_inverse[t]),np.array(s_initial[t])) for t in range(len(Choice_set))]</span>
+    <span class="n">p</span><span class="o">=</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">*</span><span class="nb">len</span><span class="p">(</span><span class="n">Choice_set</span><span class="p">)</span>
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">Choice_set</span><span class="p">)):</span>
+        <span class="n">p</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">*</span> <span class="nb">len</span><span class="p">(</span><span class="n">Choice_set</span><span class="p">[</span><span class="n">i</span><span class="p">])</span>
+
+    <span class="k">for</span> <span class="n">t</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">Choice_set</span><span class="p">)):</span>
+        <span class="n">a</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">matmul</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">dsdp_inverse</span><span class="p">[</span><span class="n">t</span><span class="p">]),</span><span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">s_initial</span><span class="p">[</span><span class="n">t</span><span class="p">]))</span>
+        <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">Choice_set</span><span class="p">[</span><span class="n">t</span><span class="p">])):</span>
+            <span class="n">p</span><span class="p">[</span><span class="n">t</span><span class="p">][</span><span class="n">j</span><span class="p">]</span><span class="o">=</span><span class="n">mc</span><span class="p">[</span><span class="n">t</span><span class="p">][</span><span class="n">j</span><span class="p">]</span><span class="o">-</span><span class="n">a</span><span class="p">[</span><span class="n">j</span><span class="p">]</span>
+    <span class="k">return</span> <span class="n">p</span><span class="p">,</span> <span class="n">s_initial</span><span class="p">,</span> <span class="n">mc</span><span class="p">,</span> <span class="n">dsdp</span><span class="p">,</span> <span class="n">w</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[0]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1">#begin price_p converge without changing the BB2 cost structure</span>
+<span class="n">t_old</span> <span class="o">=</span> <span class="mi">0</span>
+<span class="n">t_new</span> <span class="o">=</span> <span class="mi">0</span>
+<span class="n">count</span><span class="o">=</span><span class="mi">0</span>
+<span class="n">dif</span><span class="o">=</span><span class="mi">1000</span>
+<span class="c1"># dif = t_new - t_old</span>
+
+<span class="k">while</span> <span class="n">dif</span> <span class="o">&gt;</span> <span class="mf">0.05</span><span class="p">:</span>
+    <span class="n">p1_p</span><span class="p">,</span> <span class="n">s1_p</span><span class="p">,</span> <span class="n">mc_p</span><span class="p">,</span> <span class="n">dsdp_p</span><span class="p">,</span> <span class="n">w</span><span class="o">=</span><span class="n">new_price_p1</span><span class="p">(</span><span class="n">Choice_set_p</span><span class="p">,</span> <span class="n">dummies_p</span><span class="p">,</span> <span class="n">p_initial_p</span><span class="p">,</span> <span class="n">ownership_post</span><span class="p">,</span> <span class="n">index_p</span><span class="p">,</span> <span class="n">s_temp_p</span><span class="p">,</span> <span class="n">I</span><span class="p">)</span>
+    <span class="k">for</span> <span class="n">t</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">Choice_set</span><span class="p">)):</span>
+        <span class="n">new</span><span class="o">=</span><span class="nb">sum</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">p1_p</span><span class="p">[</span><span class="n">t</span><span class="p">]))</span>
+        <span class="n">old</span><span class="o">=</span><span class="nb">sum</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">p_initial_p</span><span class="p">[</span><span class="n">t</span><span class="p">]))</span>
+        <span class="n">t_new</span><span class="o">=</span><span class="n">t_new</span><span class="o">+</span><span class="n">new</span>
+        <span class="n">t_old</span><span class="o">=</span><span class="n">t_old</span><span class="o">+</span><span class="n">old</span>
+    <span class="n">dif</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">absolute</span><span class="p">(</span><span class="n">t_new</span><span class="o">-</span><span class="n">t_old</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">dif</span><span class="p">)</span>
+    <span class="n">p_initial_p</span><span class="o">=</span><span class="n">p1_p</span>
+    <span class="n">t_new</span><span class="o">=</span><span class="mi">0</span>
+    <span class="n">t_old</span><span class="o">=</span><span class="mi">0</span>
+    <span class="n">count</span><span class="o">=</span><span class="n">count</span><span class="o">+</span><span class="mi">1</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Q8</p>
+<p>We let local brewery 1 is the buyout for BB and becomes BB2. We reconstruct the choice set and ownership matrix.</p>
+<p>Firstly, we assume that the BB2 doesn't adopt BB's cost structure. We can see that even the choice set for market 1 doesn't change, the price for breweries changes. But interestingly, the orginal price for breweries 1 is 2.3920 while the post-buyout price is 3.4148 which increases. For other breweries, most of them experienced price dropping. This is not consistent with the explanation in Q1.</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[0]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">p1_p</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+<div class="prompt output_prompt">Out[0]:</div>
+
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>[array([1.27504093]),
+ array([2.78728256]),
+ array([2.64214306]),
+ array([2.70273695]),
+ array([2.69087349]),
+ array([2.47185859]),
+ array([2.57680577]),
+ array([3.41488736])]</pre>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[0]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">p1</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+<div class="prompt output_prompt">Out[0]:</div>
+
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>[array([1.44882349]),
+ array([2.39201794]),
+ array([2.73532714]),
+ array([2.80234308]),
+ array([2.57016597]),
+ array([2.57482058]),
+ array([3.24092971]),
+ array([2.80247349])]</pre>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[0]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1">#use old price to generate new price with changing cost structure</span>
+<span class="k">def</span> <span class="nf">new_price_p2</span><span class="p">(</span><span class="n">Choice_set</span><span class="p">,</span> <span class="n">dummies</span><span class="p">,</span> <span class="n">p_initial</span><span class="p">,</span> <span class="n">ownership</span><span class="p">,</span> <span class="n">index</span><span class="p">,</span> <span class="n">s_temp</span><span class="p">,</span> <span class="n">I</span><span class="p">):</span>
+    <span class="n">s_all_id</span><span class="o">=</span><span class="p">[]</span>
+    <span class="n">s_all_id</span><span class="o">=</span><span class="p">[</span><span class="n">id_share_p</span><span class="p">(</span><span class="n">Choice_set</span><span class="p">,</span> <span class="n">dummies</span><span class="p">,</span> <span class="n">p_initial</span><span class="p">,</span> <span class="n">index</span><span class="p">,</span> <span class="n">s_temp</span><span class="p">)</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">I</span><span class="p">)]</span>
+    <span class="c1"># s_all_id[0][0][0]</span>
+    
+    <span class="c1">#market share</span>
+    <span class="n">s_initial</span><span class="o">=</span><span class="p">[]</span>
+    <span class="n">s_initial</span><span class="o">=</span><span class="p">[[</span><span class="nb">sum</span><span class="p">(</span><span class="n">s_all_id</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="n">t</span><span class="p">][</span><span class="n">j</span><span class="p">]</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">I</span><span class="p">))</span><span class="o">/</span><span class="n">I</span> <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">Choice_set</span><span class="p">[</span><span class="n">t</span><span class="p">]))]</span> <span class="k">for</span> <span class="n">t</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">Choice_set</span><span class="p">))]</span>
+
+    <span class="c1">#generate ds/dp matrix</span>
+    <span class="n">ds</span><span class="o">=</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">((</span><span class="nb">len</span><span class="p">(</span><span class="n">Choice_set</span><span class="p">[</span><span class="n">t</span><span class="p">]),</span><span class="nb">len</span><span class="p">(</span><span class="n">Choice_set</span><span class="p">[</span><span class="n">t</span><span class="p">])))</span> <span class="k">for</span> <span class="n">t</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">Choice_set</span><span class="p">))]</span>
+    <span class="k">for</span> <span class="n">t</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">Choice_set</span><span class="p">)):</span>
+        <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">Choice_set</span><span class="p">[</span><span class="n">t</span><span class="p">])):</span>
+            <span class="k">for</span> <span class="n">k</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">Choice_set</span><span class="p">[</span><span class="n">t</span><span class="p">])):</span>
+                <span class="k">if</span> <span class="p">(</span><span class="n">j</span><span class="o">==</span><span class="n">k</span><span class="p">):</span>
+                    <span class="n">ds</span><span class="p">[</span><span class="n">t</span><span class="p">][</span><span class="n">j</span><span class="p">][</span><span class="n">k</span><span class="p">]</span><span class="o">=</span><span class="nb">sum</span><span class="p">(</span><span class="n">s_all_id</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="n">t</span><span class="p">][</span><span class="n">k</span><span class="p">]</span><span class="o">*</span><span class="n">s_all_id</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="n">t</span><span class="p">][</span><span class="n">j</span><span class="p">]</span><span class="o">-</span><span class="n">s_all_id</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="n">t</span><span class="p">][</span><span class="n">k</span><span class="p">]</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">I</span><span class="p">))</span><span class="o">/</span><span class="n">I</span>
+                <span class="k">if</span> <span class="p">(</span><span class="n">j</span><span class="o">!=</span><span class="n">k</span><span class="p">):</span>
+                    <span class="n">ds</span><span class="p">[</span><span class="n">t</span><span class="p">][</span><span class="n">j</span><span class="p">][</span><span class="n">k</span><span class="p">]</span><span class="o">=</span><span class="nb">sum</span><span class="p">(</span><span class="n">s_all_id</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="n">t</span><span class="p">][</span><span class="n">k</span><span class="p">]</span><span class="o">*</span><span class="n">s_all_id</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="n">t</span><span class="p">][</span><span class="n">j</span><span class="p">]</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">I</span><span class="p">))</span><span class="o">/</span><span class="n">I</span>
+
+    <span class="c1">#multiply ownership matrix and ds/dp matrix element  by element</span>
+    <span class="n">dsdp</span><span class="o">=</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">((</span><span class="nb">len</span><span class="p">(</span><span class="n">Choice_set</span><span class="p">[</span><span class="n">t</span><span class="p">]),</span><span class="nb">len</span><span class="p">(</span><span class="n">Choice_set</span><span class="p">[</span><span class="n">t</span><span class="p">])))</span> <span class="k">for</span> <span class="n">t</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">Choice_set</span><span class="p">))]</span>
+    <span class="n">dsdp</span><span class="o">=</span><span class="p">[[[</span><span class="n">ownership</span><span class="p">[</span><span class="n">t</span><span class="p">][</span><span class="n">i</span><span class="p">][</span><span class="n">j</span><span class="p">]</span><span class="o">*</span><span class="n">ds</span><span class="p">[</span><span class="n">t</span><span class="p">][</span><span class="n">i</span><span class="p">][</span><span class="n">j</span><span class="p">]</span> <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">Choice_set</span><span class="p">[</span><span class="n">t</span><span class="p">]))]</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">Choice_set</span><span class="p">[</span><span class="n">t</span><span class="p">]))]</span> <span class="k">for</span> <span class="n">t</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">Choice_set</span><span class="p">))]</span>
+
+    <span class="c1"># dsdp_inverse=[np.zeros((len(Choice_set[t]),len(Choice_set[t]))) for t in range(len(Choice_set))]</span>
+    <span class="c1"># for t in range(len(Choice_set)):</span>
+    <span class="c1">#     for i in range(len(Choice_set[t])):</span>
+    <span class="c1">#         for j in range(len(Choice_set[t])):</span>
+    <span class="c1">#             if dsdp[t][i][j]!=0:</span>
+    <span class="c1">#                 dsdp_inverse[t][i][j]=dsdp[t][i][j]**(-1)</span>
+    <span class="n">dsdp_inverse</span><span class="o">=</span><span class="p">[]</span>
+    <span class="n">dsdp_inverse</span><span class="o">=</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">linalg</span><span class="o">.</span><span class="n">inv</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">dsdp</span><span class="p">[</span><span class="n">t</span><span class="p">]))</span> <span class="k">for</span> <span class="n">t</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">Choice_set</span><span class="p">))]</span>
+
+    <span class="c1">#generate p_new</span>
+    <span class="n">omega</span><span class="o">=</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">*</span><span class="nb">len</span><span class="p">(</span><span class="n">Choice_set</span><span class="p">)</span>
+    <span class="n">w</span><span class="o">=</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">*</span><span class="nb">len</span><span class="p">(</span><span class="n">Choice_set</span><span class="p">)</span>
+    <span class="n">mc</span><span class="o">=</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">*</span><span class="nb">len</span><span class="p">(</span><span class="n">Choice_set</span><span class="p">)</span>
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">Choice_set</span><span class="p">)):</span>
+        <span class="n">omega</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">*</span> <span class="nb">len</span><span class="p">(</span><span class="n">Choice_set</span><span class="p">[</span><span class="n">i</span><span class="p">])</span>
+        <span class="n">w</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">*</span> <span class="nb">len</span><span class="p">(</span><span class="n">Choice_set</span><span class="p">[</span><span class="n">i</span><span class="p">])</span>
+        <span class="n">mc</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">*</span> <span class="nb">len</span><span class="p">(</span><span class="n">Choice_set</span><span class="p">[</span><span class="n">i</span><span class="p">])</span>
+
+    <span class="k">for</span> <span class="n">t</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">Choice_set</span><span class="p">)):</span>
+        <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">Choice_set</span><span class="p">[</span><span class="n">t</span><span class="p">])):</span>
+            <span class="n">omega</span><span class="p">[</span><span class="n">t</span><span class="p">][</span><span class="n">j</span><span class="p">]</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">normal</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">)</span><span class="o">/</span><span class="mi">10</span><span class="p">)</span>
+            <span class="n">w</span><span class="p">[</span><span class="n">t</span><span class="p">][</span><span class="n">j</span><span class="p">]</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">normal</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">)</span><span class="o">/</span><span class="mi">8</span><span class="p">)</span>
+            <span class="k">if</span> <span class="p">(</span><span class="n">index</span><span class="p">[</span><span class="n">t</span><span class="p">][</span><span class="n">j</span><span class="p">]</span><span class="o">&lt;</span><span class="mi">5</span> <span class="ow">and</span> <span class="n">index</span><span class="p">[</span><span class="n">t</span><span class="p">][</span><span class="n">j</span><span class="o">&gt;</span><span class="mi">0</span><span class="p">]):</span>
+                <span class="n">mc</span><span class="p">[</span><span class="n">t</span><span class="p">][</span><span class="n">j</span><span class="p">]</span><span class="o">=</span><span class="n">omega</span><span class="p">[</span><span class="n">t</span><span class="p">][</span><span class="n">j</span><span class="p">]</span><span class="o">*</span><span class="n">w</span><span class="p">[</span><span class="n">t</span><span class="p">][</span><span class="n">j</span><span class="p">]</span>
+            <span class="k">if</span> <span class="p">(</span><span class="n">index</span><span class="p">[</span><span class="n">t</span><span class="p">][</span><span class="n">j</span><span class="p">]</span><span class="o">&gt;=</span><span class="mi">5</span><span class="p">):</span>
+                <span class="n">mc</span><span class="p">[</span><span class="n">t</span><span class="p">][</span><span class="n">j</span><span class="p">]</span><span class="o">=</span><span class="n">omega</span><span class="p">[</span><span class="n">t</span><span class="p">][</span><span class="n">j</span><span class="p">]</span><span class="o">*</span><span class="n">w</span><span class="p">[</span><span class="n">t</span><span class="p">][</span><span class="n">j</span><span class="p">]</span><span class="o">*</span><span class="mf">0.85</span>
+            <span class="k">if</span> <span class="p">(</span><span class="n">index</span><span class="p">[</span><span class="n">t</span><span class="p">][</span><span class="n">j</span><span class="p">]</span><span class="o">==</span><span class="mi">0</span><span class="p">):</span>
+                <span class="n">mc</span><span class="p">[</span><span class="n">t</span><span class="p">][</span><span class="n">j</span><span class="p">]</span><span class="o">=</span><span class="mi">0</span>
+    <span class="c1"># mc=[[np.exp(np.random.normal(0,1,1)/8)*np.exp(np.random.normal(0,1,1)/10) for j in range(len(Choice_set[t]))] for t in range(len(Choice_set))]</span>
+    <span class="c1"># p=[mc[t]-np.matmul(np.array(dsdp_inverse[t]),np.array(s_initial[t])) for t in range(len(Choice_set))]</span>
+    <span class="n">p</span><span class="o">=</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">*</span><span class="nb">len</span><span class="p">(</span><span class="n">Choice_set</span><span class="p">)</span>
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">Choice_set</span><span class="p">)):</span>
+        <span class="n">p</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">*</span> <span class="nb">len</span><span class="p">(</span><span class="n">Choice_set</span><span class="p">[</span><span class="n">i</span><span class="p">])</span>
+
+    <span class="k">for</span> <span class="n">t</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">Choice_set</span><span class="p">)):</span>
+        <span class="n">a</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">matmul</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">dsdp_inverse</span><span class="p">[</span><span class="n">t</span><span class="p">]),</span><span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">s_initial</span><span class="p">[</span><span class="n">t</span><span class="p">]))</span>
+        <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">Choice_set</span><span class="p">[</span><span class="n">t</span><span class="p">])):</span>
+            <span class="n">p</span><span class="p">[</span><span class="n">t</span><span class="p">][</span><span class="n">j</span><span class="p">]</span><span class="o">=</span><span class="n">mc</span><span class="p">[</span><span class="n">t</span><span class="p">][</span><span class="n">j</span><span class="p">]</span><span class="o">-</span><span class="n">a</span><span class="p">[</span><span class="n">j</span><span class="p">]</span>
+    <span class="k">return</span> <span class="n">p</span><span class="p">,</span> <span class="n">s_initial</span><span class="p">,</span> <span class="n">mc</span><span class="p">,</span> <span class="n">dsdp</span><span class="p">,</span> <span class="n">w</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[0]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1">#begin price_p converge with changing the BB2 cost structure</span>
+<span class="n">t_old</span> <span class="o">=</span> <span class="mi">0</span>
+<span class="n">t_new</span> <span class="o">=</span> <span class="mi">0</span>
+<span class="n">count</span><span class="o">=</span><span class="mi">0</span>
+<span class="n">dif</span><span class="o">=</span><span class="mi">1000</span>
+<span class="c1"># dif = t_new - t_old</span>
+
+<span class="k">while</span> <span class="n">dif</span> <span class="o">&gt;</span> <span class="mi">5</span><span class="p">:</span>
+    <span class="n">p1_p2</span><span class="p">,</span> <span class="n">s1_p2</span><span class="p">,</span> <span class="n">mc_p2</span><span class="p">,</span> <span class="n">dsdp_p2</span><span class="p">,</span> <span class="n">w_p2</span><span class="o">=</span><span class="n">new_price_p2</span><span class="p">(</span><span class="n">Choice_set_p</span><span class="p">,</span> <span class="n">dummies_p</span><span class="p">,</span> <span class="n">p_initial_p</span><span class="p">,</span> <span class="n">ownership_post</span><span class="p">,</span> <span class="n">index_p</span><span class="p">,</span> <span class="n">s_temp_p</span><span class="p">,</span> <span class="n">I</span><span class="p">)</span>
+    <span class="k">for</span> <span class="n">t</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">Choice_set</span><span class="p">)):</span>
+        <span class="n">new</span><span class="o">=</span><span class="nb">sum</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">p1_p2</span><span class="p">[</span><span class="n">t</span><span class="p">]))</span>
+        <span class="n">old</span><span class="o">=</span><span class="nb">sum</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">p_initial_p</span><span class="p">[</span><span class="n">t</span><span class="p">]))</span>
+        <span class="n">t_new</span><span class="o">=</span><span class="n">t_new</span><span class="o">+</span><span class="n">new</span>
+        <span class="n">t_old</span><span class="o">=</span><span class="n">t_old</span><span class="o">+</span><span class="n">old</span>
+    <span class="n">dif</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">absolute</span><span class="p">(</span><span class="n">t_new</span><span class="o">-</span><span class="n">t_old</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">dif</span><span class="p">)</span>
+    <span class="n">p_initial_p</span><span class="o">=</span><span class="n">p1_p</span>
+    <span class="n">t_new</span><span class="o">=</span><span class="mi">0</span>
+    <span class="n">t_old</span><span class="o">=</span><span class="mi">0</span>
+    <span class="n">count</span><span class="o">=</span><span class="n">count</span><span class="o">+</span><span class="mi">1</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Q8</p>
+<p>Secondly, we let BB2 adopt BB's cost structure which means that BB2 lower its marginal cost. Similarly, we use market 1 as an example. Still interestingly, the original price is 2.3920 while the post-buyout price with lower marginal cost is 2.8358. This is lower than the case without lower marginal cost which make sense, but still higher than the price before buyout.</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[0]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">p1_p2</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+<div class="prompt output_prompt">Out[0]:</div>
+
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>[array([1.30470871]),
+ array([2.48482521]),
+ array([2.71354417]),
+ array([2.65868376]),
+ array([2.70706048]),
+ array([3.00225872]),
+ array([2.71924265]),
+ array([2.83585022])]</pre>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[0]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">p1</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+<div class="prompt output_prompt">Out[0]:</div>
+
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>[array([1.44882349]),
+ array([2.39201794]),
+ array([2.73532714]),
+ array([2.80234308]),
+ array([2.57016597]),
+ array([2.57482058]),
+ array([3.24092971]),
+ array([2.80247349])]</pre>
+</div>
+
+</div>
+
 </div>
 </div>
 
