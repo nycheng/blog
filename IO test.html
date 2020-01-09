@@ -114,7 +114,20 @@
             <section class="post-content">
                 <h1>Question 1</h1>
 <h2>Build the context</h2>
-<p><strong>context</strong></p>
+<p>Suppose BB acquires one of the local breweries through a buyout. Let's denote that acquired local brewery as BB2. This buyout may result in higher prices for some brew in some counties but lower prices in other counties. For counties that the local brewery was avaialbe, consumers experienced the disutility because the local brewery is related to the corporate brand. So the demand in the original home market decrease for the local brewery. Instead, the share for other breweries increase so that the prices of other breweries increases. For counties that the local brewery was not avaible, the new coming brewery will take the market share from the orginal available brewery so that the prices for the original breweries decrease.</p>
+<div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="kn">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">pandas</span> <span class="kn">as</span> <span class="nn">pd</span>
+<span class="kn">import</span> <span class="nn">random</span>
+
+<span class="n">random</span><span class="o">.</span><span class="n">seed</span><span class="p">(</span><span class="mi">300</span><span class="p">)</span>
+<span class="c1">#firstly set 5*5 matrix market with r=3.</span>
+<span class="n">T</span><span class="o">=</span><span class="mi">25</span>
+<span class="n">J</span><span class="o">=</span><span class="mi">10</span> <span class="c1"># 4 local and 2 corporate and 2 corporate subsidiaries. Each market has at least 2 local breweries.</span>
+<span class="n">Local_market</span> <span class="o">=</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">12</span><span class="p">,</span> <span class="mi">14</span><span class="p">,</span> <span class="mi">23</span><span class="p">]</span>
+<span class="n">Coporate</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;AB&#39;</span><span class="p">,</span> <span class="s1">&#39;MC&#39;</span><span class="p">,</span> <span class="s1">&#39;BB&#39;</span><span class="p">,</span> <span class="s1">&#39;AB2&#39;</span><span class="p">,</span> <span class="s1">&#39;MC2&#39;</span><span class="p">]</span>
+<span class="n">Available_product</span> <span class="o">=</span> <span class="n">Local_market</span> <span class="o">+</span> <span class="n">Coporate</span>
+<span class="n">I</span><span class="o">=</span><span class="mi">100</span>
+</pre></div>
             </section>
 
             <section class="post-info">
