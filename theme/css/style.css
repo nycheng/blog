@@ -121,7 +121,7 @@ kbd,
 pre,
 samp {
     font-family: monospace, monospace;
-    font-size: 1em
+    font-size: 0.5em
 }
 
 button,
@@ -558,7 +558,7 @@ ol>li:before {
     font-size: 1em;
     font-weight: 500;
     line-height: 1.5em;
-    text-align: right;
+    text-align: justify;
     color: #000
 }
 
@@ -643,7 +643,7 @@ dl dt {
     width: 180px;
     overflow: hidden;
     clear: left;
-    text-align: right;
+    text-align: justify;
     text-overflow: ellipsis;
     white-space: nowrap;
     font-weight: bold;
